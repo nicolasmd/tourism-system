@@ -1,0 +1,10 @@
+510		Erreur de session
+511		Aucun dcIdentifier
+512		Aucune raison sociale
+513		Aucun dcTitle
+514		Ce bordereau n'est pas défini
+515		Aucun codeInsee
+516		Vous n'avez pas accès à cette fiche.
+517		Droits insuffisants : vous n'avez pas les droits sur cette fiche
+518		Droits insuffisants : vous n'avez pas les droits sur le champ cette fiche
+519		Droits insuffisants : vous n'avez pas les droits sur ce profil

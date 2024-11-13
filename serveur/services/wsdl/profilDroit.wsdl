@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+			
+			
+			<complexType name="droitChamp">
+				<all>
+					<element name="idChamp" type="xsd:int"/>
+					<element name="visualisation" type="boolean"/>
+					<element name="modification" type="boolean"/>
+					<element name="validation" type="boolean"/>
+				</all>
+			</complexType>
+			
+			<complexType name="ArrayOfDroitsChamp">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:droitChamp[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			
+			
+			
+			<complexType name="profilDroit">
+				<all>
+					<element name="idProfil" type="xsd:int"/>
+					<element name="idGroupe" type="xs:anyType"/>
+					<element name="libelle" type="xsd:string"/>
+					<element name="visualisation" type="boolean"/>
+					<element name="modification" type="boolean"/>
+					<element name="validation" type="boolean"/>
+					<element name="creationFiches" type="boolean"/>
+					<element name="suppressionFiches" type="boolean"/>
+					<element name="administration" type="boolean"/>
+					<element name="droitsChamp" type="tns:ArrayOfDroitsChamp"/>
+					<!--element name="droitsChamp" type="xs:anyType"/-->
+				</all>
+			</complexType>
+			
+			<complexType name="ArrayOfProfilDroits">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:profilDroit[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			
+			
+			
+			
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	<message name="createProfilRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="libelle" type="xsd:string"/>
+		<part name="idGroupe" nillable="true" type="xsd:int"/>
+	</message>
+	<message name="createProfilResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="idProfil" type="xsd:int"/>
+	</message>
+	
+	<message name="updateProfilRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idProfil" type="xsd:int"/>
+		<part name="droit" nillable="true" type="xs:anyType"/>
+	</message>
+	<message name="updateProfilResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="deleteProfilRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idProfil" type="xsd:int"/>
+	</message>
+	<message name="deleteProfilResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+
+	<message name="setProfilDroitChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idProfil" type="xsd:int"/>
+		<part name="idChamp" type="xsd:int"/>
+		<part name="droit" type="xs:anyType"/>
+	</message>
+	<message name="setProfilDroitChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="deleteProfilDroitChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idProfil" type="xsd:int"/>
+		<part name="idChamp" type="xsd:int"/>
+	</message>
+	<message name="deleteProfilDroitChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="getProfilsRequest">
+		<part name="sessionId" type="xsd:string"/>
+	</message>
+	<message name="getProfilsResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<!--part name="profils" type="tns:ArrayOfProfilDroits"/-->
+		<part name="profils" type="xs:anyType"/>
+	</message>
+
+	<message name="getProfilDroitsRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idProfil" type="xsd:int"/>
+	</message>
+	<message name="getProfilDroitsResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="profilDroits" type="tns:profilDroit"/>
+	</message>
+	
+	<message name="getProfilDroitChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idProfil" type="xsd:int"/>
+		<part name="idChamp" type="xsd:int"/>
+	</message>
+	<message name="getProfilDroitChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="droitChamp" type="tns:droitChamp"/>
+	</message>
+	
+	
+	<portType name="CspPorts">
+		<operation name="createProfil">
+			<input  message="tns:createProfilRequest"/>
+			<output message="tns:createProfilResponse"/>
+		</operation>
+		
+		<operation name="updateProfil">
+			<input  message="tns:updateProfilRequest"/>
+			<output message="tns:updateProfilResponse"/>
+		</operation>
+		
+		<operation name="deleteProfil">
+			<input  message="tns:deleteProfilRequest"/>
+			<output message="tns:deleteProfilResponse"/>
+		</operation>
+		
+		<operation name="setProfilDroitChamp">
+			<input  message="tns:setProfilDroitChampRequest"/>
+			<output message="tns:setProfilDroitChampResponse"/>
+		</operation>
+		
+		<operation name="deleteProfilDroitChamp">
+			<input  message="tns:deleteProfilDroitChampRequest"/>
+			<output message="tns:deleteProfilDroitChampResponse"/>
+		</operation>
+		
+		<operation name="getProfils">
+			<input  message="tns:getProfilsRequest"/>
+			<output message="tns:getProfilsResponse"/>
+		</operation>
+		
+		<operation name="getProfilDroits">
+			<input  message="tns:getProfilDroitsRequest"/>
+			<output message="tns:getProfilDroitsResponse"/>
+		</operation>
+		
+		<operation name="getProfilDroitChamp">
+			<input  message="tns:getProfilDroitChampRequest"/>
+			<output message="tns:getProfilDroitChampResponse"/>
+		</operation>
+		
+	</portType>
+
+	<binding name="wsBinding" type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="createProfil">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/profilDroit.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="updateProfil">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/profilDroit.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="deleteProfil">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/profilDroit.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="setProfilDroitChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/profilDroit.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="deleteProfilDroitChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/profilDroit.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="getProfils">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/profilDroit.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="getProfilDroits">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/profilDroit.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="getProfilDroitChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/profilDroit.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="TourismSystemWebServiceProfilDroit">
+		<documentation>Webservice de profilDroit de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}profilDroit.php"/>
+		</port>
+	</service>
+
+</definitions>

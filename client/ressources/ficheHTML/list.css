@@ -1,0 +1,61 @@
+.tourismeConteneur {
+	width:670px;
+	margin:0 auto;
+}
+
+.listeFiche {
+	float:left;
+	width:320px;
+	margin-right:20px;
+	margin-bottom:20px;
+	border:1px solid #d0d0d0;
+}
+.listeFiche.last {
+	margin:0;
+}
+
+.listeHeader {
+	background:#7badd8;
+}
+.listeEtoile ul {
+	margin:0;
+	padding:0;
+}
+.listeEtoile ul li {
+	list-style:none;
+	list-style-image:none;
+	background:none;
+	display:inline;
+}
+
+.listeLogo {
+	float:left;
+}
+.listeLogo ul {
+	margin:0;
+	padding:0;
+}
+.listeLogo ul li {
+	list-style:none;
+	list-style-image:none;
+	background:none;
+	display:inline;
+}
+.listeAvis {
+	float:right;
+}
+
+.listeResume {
+	clear:both;
+}
+
+.listeBoutons ul {
+	margin:0;
+	padding:0;
+}
+.listeBoutons ul li {
+	list-style:none;
+	list-style-image:none;
+	background:none;
+	display:inline;
+}

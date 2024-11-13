@@ -1,0 +1,1138 @@
+/*
+ * Mode Détail
+ */
+ 
+#tourismeConteneur {
+	position:relative;
+	font-family:Arial;
+	width:665px;
+	margin:0 auto;
+}
+
+
+#tourismeConteneur .detailLiens {
+	position:absolute;
+	top:-20px;
+	right:0;
+}
+#tourismeConteneur .detailLiens ul {
+	margin:6px 0 15px 0;
+	padding:0;
+	float:right;
+}
+#tourismeConteneur .detailLiens ul li {
+	margin:0 0 0 15px;
+	padding:0;
+	float:left;
+}
+#tourismeConteneur .detailLiens ul li a {
+	text-decoration:underline;
+	font-size:12px;
+	color:#414141;
+}
+#tourismeConteneur .detailLiens ul li a:hover {
+	text-decoration:none;
+}
+#tourismeConteneur .detailLiens ul li .LienSiteWeb a {
+	font-weight:bold;
+	color:#4678A3;
+}
+
+
+#tourismeConteneur  .detailFiche {
+	padding-top:15px;
+}
+/* Entête de la fiche */
+
+#tourismeConteneur .detailTab {
+	margin:5px 0 0 0;
+	width:100%;
+}
+#tourismeConteneur .detailTab td {
+	background:#f8f7f5;
+	border:1px solid #d0d0d0;
+	padding:0;
+	vertical-align:top;
+}
+#tourismeConteneur .detailTab td.detailTabCentre {
+	background:none;
+	border:none;
+	width:4px;
+	display:block;
+}
+#tourismeConteneur  .detailHeader {
+	clear:both;
+	border:none;
+	padding:10px;
+	position:relative;
+	overflow:hidden;
+}
+#tourismeConteneur  .detailHeader .detailPhoto {
+	float:left;
+	margin-right:10px;
+}
+#tourismeConteneur  .detailHeader .detailPhoto img {
+	border:none;
+}
+#tourismeConteneur  .detailHeaderFiche {
+	color:#414141;
+}
+#tourismeConteneur  .detailHeaderFiche .titre {
+	font-weight:bold;
+}
+#tourismeConteneur  .detailHeaderFiche .detailAdresse {
+	font-size:12px;
+	margin-bottom:8px;
+}
+#tourismeConteneur  .detailHeaderFiche .detailAdresse .adresse span {
+	display:block;
+}
+#tourismeConteneur  .detailHeaderFiche .cpVille {
+	margin-bottom:8px;
+}
+#tourismeConteneur  .detailHeaderFiche .detailAdresse .telephone,
+#tourismeConteneur  .detailHeaderFiche .detailAdresse .fax {
+	font-weight:bold;
+}
+#tourismeConteneur  .detailHeaderFiche .LienSiteWeb {
+	margin-bottom:4px;
+	font-size:12px;
+}
+#tourismeConteneur  .detailHeaderFiche .LienSiteWeb a {
+	color:#414141;
+	font-weight:bold;
+	text-decoration:underline;
+}
+#tourismeConteneur  .detailHeaderFiche .LienSiteWeb a:hover {
+	text-decoration:none;
+}
+#tourismeConteneur  .detailHeaderFiche .detailCapaciteLabel {
+	font-weight:bold;
+}
+#tourismeConteneur  .detailHeaderFiche .detailIcones {
+	position:absolute;
+	bottom:9px;
+	left:343px;
+	overflow:hidden;
+	width:323px;
+}
+#tourismeConteneur  .detailHeaderFiche .detailIcones.pasPhotoPasAvis {
+	position:static;
+	clear:both;
+	float:left;
+	width:649px;
+}
+#tourismeConteneur  .detailHeaderFiche .detailLogoEtLangues {
+	clear:both;
+}
+#tourismeConteneur  .detailHeaderFiche .detailIcones li{
+	float:left;
+}
+#tourismeConteneur  .detailHeaderFiche .langues {
+	clear:both;
+	float:left;
+	margin-right:10px;
+	margin-top:15px;
+}
+#tourismeConteneur  .detailHeaderFiche .detailLogo {
+	/*position:absolute;
+	bottom:0;
+	left:0;*/
+}
+#tourismeConteneur  .detailHeaderFiche .detailLabel ul,
+#tourismeConteneur  .detailHeaderFiche .detailLogo ul,
+#tourismeConteneur  .detailHeaderFiche .langues ul {
+	margin:0;
+	padding:0;
+}
+/* Quand est-ce qu'on qu'on inverse les logos (chaines en dessous et label au dessus) ? (3/11/10) */
+#tourismeConteneur  .detailHeaderFiche .detailLabel li {
+	padding:1px 2px;
+}
+#tourismeConteneur  .detailHeaderFiche .detailLogo li,
+#tourismeConteneur  .detailHeaderFiche .langues li  {
+	padding:1px;
+}
+#tourismeConteneur .detailLogoPrincipal {
+	position:absolute;
+	top:7px;
+	right:7px;
+}
+#tourismeConteneur .detailLogoPrincipal span {
+	display:block;
+	height:60px;
+	float:left;
+}
+#tourismeConteneur .detailLogoPrincipal span.left {
+	background:url(images/logo_detail_left.png) no-repeat top left;
+	width:5px;
+}
+#tourismeConteneur .detailLogoPrincipal span.right {
+	background:url(images/logo_detail_right.png) no-repeat top right;
+	width:5px;
+}
+#tourismeConteneur .detailLogoPrincipal span.middle {
+	padding:5px 1px;
+	height:44px;
+	background:url(images/logo_detail_middle.png) repeat-x;
+}
+
+
+/* Entête de la fiche avec avis */
+#tourismeConteneur  .detailHeaderAvecAvis {
+	clear:both;
+	padding:10px 10px 5px 10px;
+	position:relative;
+	width:375px;
+	min-height:180px;
+	height:auto;
+	float:left;
+	overflow:hidden;
+}
+#tourismeConteneur  .blocAvisHeader {
+	float:right;
+	width:245px;
+	height:180px;
+	padding:10px;
+	position:relative;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .titre {
+	float:right;
+	width:150px;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .detailPhoto {
+	float:left;
+	margin-bottom:0px;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .detailAdresse {
+	float:right;
+	overflow:hidden;
+	margin-top:38px;
+	width:150px;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .LienSiteWeb {
+	float:right;
+	width:150px;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .LienSiteWeb a {
+	color:#414141;
+	font-weight:bold;
+	text-decoration:underline;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .LienSiteWeb a:hover {
+	text-decoration:none;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .detailIcones {
+	position:static;
+	clear:both;
+	float:left;
+	overflow:hidden;
+	width:378px;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .detailLogoEtLangues {
+	clear:none;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .detailLabel {
+	width:265px;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .detailLabel li {
+	float:left;
+	margin:0 2px;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .langues {
+	display:none;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .detailLogo {
+	position:static;
+	float:right;
+}
+#tourismeConteneur  .detailHeaderAvecAvis .detailLogo li {
+	float:left;
+	margin:0 1px;
+	padding:0;
+	width:25px;
+}
+#tourismeConteneur  .blocAvisHeader .nombreAvis {
+	position:absolute;
+	top:-17px;
+	right:8px;
+}
+#tourismeConteneur  .blocAvisHeader .nombreAvis .nbAvis {
+	color:#414141;
+	font-weight:bold;
+	text-align:center;
+}
+#tourismeConteneur  .blocAvisHeader .unAvis {
+	margin-top:25px;
+}
+#tourismeConteneur  .blocAvisHeader .unAvis div {
+	margin:0 40px;
+}
+#tourismeConteneur  .blocAvisHeader div.smileyAvis {
+	float:left;
+	margin:0;
+}
+#tourismeConteneur  .blocAvisHeader div.auteurAvis {
+	color:#414141;
+	font-weight:bold;
+}
+#tourismeConteneur  .blocAvisHeader div.dateAvis {
+	color:#414141;
+	font-size:12px;
+}
+#tourismeConteneur  .blocAvisHeader div.texteAvis {
+	color:#325b7d;
+	margin-top:5px;
+}
+#tourismeConteneur  .blocAvisHeader .tousAvis {
+	background:url(images/all_avis.png) no-repeat top left;
+	width:165px;
+	height:24px;
+	line-height:24px;
+	text-align:center;
+	position:absolute;
+	bottom:8px;
+	left:45px;
+}
+#tourismeConteneur  .blocAvisHeader .tousAvis a {
+	color:#414141;
+}
+#tourismeConteneur  .blocAvisHeader .tousAvis a:hover {
+	text-decoration:underline;
+}
+
+
+
+
+/* Barre de navigation */
+#tourismeConteneur  .detailOnglet {
+	padding:20px 0 5px;
+	clear:both;
+}
+#tourismeConteneur  .detailOnglet table {
+	margin:0;
+	background:url(images/bg_onglet.png) repeat-x top left;
+	width:100%;
+	border-spacing: 0px;
+	border-collapse: collapse; 
+}
+#tourismeConteneur  .detailOnglet td {
+	list-style:none;
+	list-style-image:none;
+	background:none;
+	color:#414141;
+	font-weight:bold;
+	padding:0 0 12px;
+	text-align:center;
+	vertical-align:top;
+	line-height:28px;
+	height:28px;
+	border:none;
+}
+#tourismeConteneur  .detailOnglet td a {
+	padding:0;
+	display:block;
+	color:#414141;
+	font-weight:bold;
+	height:100%;
+	line-height:28px;
+	border:1px solid #c5c5c5;
+	border-left:none;
+	text-decoration:none;
+	font-size:12px;
+}
+#tourismeConteneur  .detailOnglet td a.reserver {
+	background:url(images/bg_reserver_middle.png) repeat-x top left;
+	color:#fff;
+}
+#tourismeConteneur  .detailOnglet td a.reserver:hover {
+	background:url(images/bg_reserver_middle.png) repeat-x top left;
+	color:#084943;
+}
+#tourismeConteneur  .detailOnglet td.ongletActif {
+	background:url(images/fleche_active.png) no-repeat center bottom;
+}
+#tourismeConteneur  .detailOnglet td a:hover,
+#tourismeConteneur  .detailOnglet td.ongletActif a {
+	background:#5080ab url(images/bg_onglet.png) repeat-x top left;
+	cursor:pointer;
+	color:#f8f7f5;
+	text-decoration:none;
+}
+#tourismeConteneur  .detailOnglet td.ongletActif a {
+	border-bottom:1px solid #5080aa;
+}
+#tourismeConteneur  .detailOnglet td.boutonretour,
+#tourismeConteneur  .detailOnglet td.boutonretour2 {
+	width:34px;
+}
+#tourismeConteneur  .detailOnglet td.boutonretour a,
+#tourismeConteneur  .detailOnglet td.boutonretour2 a {
+	background:url(images/retour.png) no-repeat bottom left;
+	border:1px solid #c5c5c5;
+}
+#tourismeConteneur  .detailOnglet td.boutonretour2 a {
+	border-left:0;
+}
+#tourismeConteneur  .detailOnglet td.boutonretour a:hover,
+#tourismeConteneur  .detailOnglet td.boutonretour2 a:hover {
+	background:#4f80ac url(images/retour_hover.png) no-repeat bottom left;
+}
+
+/* Description de la fiche */
+#tourismeConteneur  .detailDescription {
+	color:#717170;
+	font-size:12px;
+	line-height:1.35em;
+	text-align:justify;
+	padding:6px;
+	margin-bottom:6px;
+}
+#tourismeConteneur .detailFicheContent h3 {
+	background:none;
+	margin:20px 0 0 0;
+	padding:0;
+	font-weight:bold;
+	font-size:12px;
+	line-height:1.5em;
+	color:#7badd8;
+}
+#tourismeConteneur  .detailFicheContent fieldset legend {
+	font-size:12px;
+	padding:0 6px;
+}
+#tourismeConteneur .detailFicheContent ul {
+	margin:0;
+	padding:0;
+}
+#tourismeConteneur .detailFicheContent li {
+	margin:0;
+	padding:0;
+	background:none;
+	list-style:none outside none;
+}
+#tourismeConteneur .detailFicheContent fieldset li {
+	/*float:left;*/
+	display:-moz-inline-box;
+	display:inline-block;
+	width:250px;
+}
+
+/* Liste des prestations */
+#tourismeConteneur .detailFicheContent .prestations h3 {
+	padding-left:10px !important;
+}
+#tourismeConteneur .detailFicheContent .prestations legend {
+	margin:0;
+	margin-left:10px;
+	padding:0;
+	color:#535353;
+	font-weight:bold;
+}
+#tourismeConteneur .detailFicheContent .prestations legend a {
+	color:#535353;
+	font-size:12px;
+	padding:0 4px;
+}
+#tourismeConteneur .detailFicheContent .prestations fieldset {
+	margin:10px 0;
+	padding:5px;
+}
+#tourismeConteneur .detailFicheContent .prestations li {
+	font-size:12px;
+	margin-left:5px;
+	padding-left:10px;
+	background:url(images/puce_li_periode.png) no-repeat 0 5px;
+}
+#tourismeConteneur .detailFicheContent .prestations li,
+#tourismeConteneur .detailFicheContent .prestations li a {
+	color:#535353;
+}
+
+/* Diaporama */
+#tourismeConteneur .detailFicheContent .galleryNavigation {
+	position:relative;
+	float:left;
+}
+#tourismeConteneur .detailFicheContent .galleryNavigationScroll {
+	left:0px;
+	position:absolute;
+}
+#tourismeConteneur .detailFicheContent .galleryNavigation li {
+	width:77px;
+	height:60px;
+	cursor:pointer;
+	overflow:hidden;
+	border:1px solid #ccc;
+}
+#tourismeConteneur .detailFicheContent .galleryNavigation li img { /* hauteur de la vignette */
+	height:60px;
+	width:77px;
+}
+#tourismeConteneur .detailFicheContent .gallery {
+	margin:0 auto 15px auto;
+	height:500px;
+	width:1020px;
+}
+#tourismeConteneur .detailFicheContent .galleryImage {
+	text-align:center;
+	width:100%;
+	position:relative;
+}
+
+/* Localisation avec la carte GoogleMap */
+#tourismeConteneur .detailFicheContent .detailCarteGoogleMap {
+	width:100%;
+	height:343px;
+	margin-bottom:15px;
+}
+
+/* Périodes d'ouverture */
+#tourismeConteneur .detailFicheContent .periode {
+	margin-left:17px;
+}
+#tourismeConteneur .detailFicheContent .periode .periodelibelle {
+	font-weight:bold;
+	font-size:12px;
+	line-height:1.5em;
+	color:#7badd8;
+}
+#tourismeConteneur .detailFicheContent .periode ul {
+	margin-top:6px;
+}
+#tourismeConteneur .detailFicheContent .periode li {
+	padding-left:15px;
+	background:url(images/puce_li_periode.png) no-repeat 0 5px;
+	font-size:12px;
+}
+#tourismeConteneur .detailFicheContent .periode span {
+	font-weight:bold;
+	margin-right:4px;
+}
+
+/* Tableau des disponibilités */
+#tourismeConteneur .detailFicheContent .enteteDispo {
+	overflow:hidden;
+	margin:15px 0 6px 0px;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo .disponibilite {
+	float:left;
+	width:350px;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo .selection {
+	float:right;
+	width:200px;
+	text-align:right;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo span {
+	float:left;
+	margin-right:10px;
+	height:20px;
+	font-size:11px;
+	line-height:20px;
+	font-weight:bold;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo span span {
+	width:20px;
+	height:20px;
+	display:block;
+	float:left;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo .dispo {
+	color:#5bc972;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo .dispo .carre {
+	background:#93e6a5;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo .complet {
+	color:#ee6e3c;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo .complet .carre {
+	background:#f9c9b6;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo .ferme {
+	color:#5b6ea9;
+}
+#tourismeConteneur .detailFicheContent .enteteDispo .ferme .carre {
+	background:#bac5e8;
+}
+#tourismeConteneur .detailFicheContent .tabDispo {
+	clear:both;
+}
+#tourismeConteneur .detailFicheContent .tabDispo .mois {
+	width:207px;
+	height:164px;
+	border:1px solid #ccc;
+	float:left;
+	margin:0px 20px 15px 0;
+}
+#tourismeConteneur .detailFicheContent .tabDispo .mois.last {
+	margin-right:0;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table {
+	width:205px;
+	font-size:10px;
+	margin:1px;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table th {
+	color:#5b6ea9;
+	text-transform:uppercase;
+	text-align:center;
+	background:none;
+	padding:0;
+	font-size:12px;
+	border:none;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td {
+	text-align:center;
+	width:20px;
+	height:18px;
+	font-weight:bold;
+	background:none;
+	padding:0 1px;
+	font-weight:normal;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td.dispo,
+#tourismeConteneur .detailFicheContent .tabDispo table td.complet,
+#tourismeConteneur .detailFicheContent .tabDispo table td.ferme {
+	color:#000;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td.dispo {
+	background:#93e6a5;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td.complet {
+	background:#f9c9b6;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td.ferme {
+	background:#bac5e8;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td div {
+	height:3px;
+}/*
+#tourismeConteneur .detailFicheContent .tabDispo table td.dispo.zoneA div,
+#tourismeConteneur .detailFicheContent .tabDispo table td.dispo.zoneB div,
+#tourismeConteneur .detailFicheContent .tabDispo table td.dispo.zoneC div {
+	background:#5bc972;
+	display:block;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td.complet.zoneA div,
+#tourismeConteneur .detailFicheContent .tabDispo table td.complet.zoneB div,
+#tourismeConteneur .detailFicheContent .tabDispo table td.complet.zoneC div {
+	background:#ee6e3c;
+	display:block;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td.ferme.zoneA div,
+#tourismeConteneur .detailFicheContent .tabDispo table td.ferme.zoneB div,
+#tourismeConteneur .detailFicheContent .tabDispo table td.ferme.zoneC div {
+	background:#5b6ea9;
+	display:block;
+}*/
+#tourismeConteneur .detailFicheContent .tabDispo table td.zoneA div {
+	background:#6367bb;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td.zoneB div {
+	background:#E38103;
+}
+#tourismeConteneur .detailFicheContent .tabDispo table td.zoneC div {
+	background:#E32D03;
+}
+#tourismeConteneur .detailFicheContent .paginationMois {
+	clear:both;
+	overflow:hidden;
+	margin-bottom:6px;
+}
+#tourismeConteneur .detailFicheContent .paginationMois .moisSuivant {
+	float:right;
+	text-align:right;
+	width:200px;
+	font-size:11px;
+}
+#tourismeConteneur .detailFicheContent .paginationMois .moisPrecedent {
+	float:left;
+	width:200px;
+	font-size:11px;
+}
+#tourismeConteneur .detailFicheContent .paginationMois a {
+	color:#414141;
+	text-decoration:underline;
+	font-weight:bold;
+}
+#tourismeConteneur .detailFicheContent .paginationMois a:hover {
+	text-decoration:none;
+}
+#tourismeConteneur .detailFicheContent #zone_vacance {
+	font-size:12px;
+}
+#tourismeConteneur .detailFicheContent .TableauRecapDispoHaut,
+#tourismeConteneur .detailFicheContent .TableauRecapDispoBas {
+	border:1px solid #cacaca;
+	background:none;
+	margin:0;
+}
+#tourismeConteneur .detailFicheContent .TableauRecapDispoHaut {
+	border-bottom:none;
+}
+#tourismeConteneur .detailFicheContent .TableauRecapDispoBas {
+	border-top:none;
+}
+#tourismeConteneur .detailFicheContent .TableauRecapDispoHaut td,
+#tourismeConteneur .detailFicheContent .TableauRecapDispoBas td {
+	background:none;
+	border:none;
+}
+#tourismeConteneur .detailFicheContent .CouleurZoneAHebergementDispos,
+#tourismeConteneur .detailFicheContent .CouleurZoneBHebergementDispos,
+#tourismeConteneur .detailFicheContent .CouleurZoneCHebergementDispos,
+#tourismeConteneur .detailFicheContent .TexteAcademiesHebergementDispos {
+	font-size:0.85em;
+	padding:1px 5px;
+}
+#tourismeConteneur .detailFicheContent .CouleurZoneAHebergementDispos.Selected {
+	color:#6367bb;
+}
+#tourismeConteneur .detailFicheContent .CouleurZoneBHebergementDispos.Selected {
+	color:#E38103;
+}
+#tourismeConteneur .detailFicheContent .CouleurZoneCHebergementDispos.Selected {
+	color:#E32D03;
+}
+#tourismeConteneur .detailFicheContent #labelZoneA span,
+#tourismeConteneur .detailFicheContent #labelZoneB span,
+#tourismeConteneur .detailFicheContent #labelZoneC span {
+	float:left;
+}
+#tourismeConteneur .detailFicheContent .CouleurZoneAHebergementDispos span.LabelZoneATrait {
+	float:left;
+	margin:9px 0 0 4px;
+	display:block;
+	height:2px;
+	width:10px;
+	background:#6367bb;
+}
+#tourismeConteneur .detailFicheContent .CouleurZoneBHebergementDispos span.LabelZoneBTrait {
+	float:left;
+	margin:9px 0 0 4px;
+	display:block;
+	height:2px;
+	width:10px;
+	background:#E38103;
+}
+#tourismeConteneur .detailFicheContent .CouleurZoneCHebergementDispos span.LabelZoneCTrait {
+	float:left;
+	margin:8px 0 0 4px;
+	display:block;
+	height:2px;
+	width:10px;
+	background:#E32D03;
+}
+
+
+/* Avis */
+#tourismeConteneur .detailFicheContent .detailAvis {
+	border:1px solid #cfcfcf;
+	width:667px;
+	margin:0 auto;
+	font-family:Arial;
+}
+#tourismeConteneur .detailFicheContent .detailEnteteAvis {
+	background:#e2edf7;
+	position:relative;
+	height:56px;
+}
+#tourismeConteneur .detailFicheContent .detailEnteteAvis .imageHotel {
+	position:absolute;
+	top:6px;
+	left:6px;
+}
+#tourismeConteneur .detailFicheContent .detailEnteteAvis .detailHotel {
+	position:absolute;
+	top:20px;
+	left:80px;
+}
+#tourismeConteneur .detailFicheContent .detailEnteteAvis .nomHotel {
+	color:#4678a3;
+	font-size:1.45em;
+	font-weight:bold;
+	margin-right:3px;
+}
+#tourismeConteneur .detailFicheContent .detailEnteteAvis .lieuHotel {
+	color:#4678a3;
+	font-size:12px;
+}
+#tourismeConteneur .detailFicheContent .detailEnteteAvis .nombreAvis {
+	position:absolute;
+	right:10px;
+	top:-14px;
+	width:60px;
+	text-align:center;
+}
+#tourismeConteneur .detailFicheContent .detailEnteteAvis .nombreAvis .nbAvis {
+	color:#4678a3;
+	font-weight:bold;
+}
+#tourismeConteneur .detailFicheContent .detailListeAvis {
+	max-height:250px;
+	overflow:auto;
+}
+#tourismeConteneur .detailFicheContent .detailAvis .avis {
+	background:#f5f9fc;
+	border-bottom:1px solid #e2e5e7;
+	padding:6px;
+	clear:both;
+	overflow:hidden;
+}
+#tourismeConteneur .detailFicheContent .detailAvis .avis .icone {
+	float:left;
+	width:66px;
+	text-align:center;
+}
+#tourismeConteneur .detailFicheContent .detailAvis .avis .icone img {
+	margin-top:10px;
+}
+#tourismeConteneur .detailFicheContent .descriptionAvis {
+	margin-bottom:10px;
+	position:relative;
+	overflow:hidden;
+	margin-left:66px;
+}
+#tourismeConteneur .detailFicheContent .detailAvis .avis .titreAvis {
+	color:#325b7d;
+	font-size:1.05em;
+	font-weight:bold;
+	margin-right:3px;
+}
+#tourismeConteneur .detailFicheContent .detailAvis .avis .auteurAvis {
+	font-weight:bold;
+	color:#414141;
+}
+#tourismeConteneur .detailFicheContent .detailAvis .avis .dateAvis {
+	position:absolute;
+	right:0;
+	top:0;
+	color:#4678a3;
+	font-size:12px;
+}
+#tourismeConteneur .detailFicheContent .detailAvis .avis .texteAvis {
+	margin-left:66px;
+}
+
+/* Tarifs */
+#tourismeConteneur .detailFicheContent .tarifs {
+	margin:15px 0;
+}
+#tourismeConteneur .detailFicheContent .tarifs table {
+	color:#757575;
+	margin:0;
+	border:1px solid #cacaca;
+	width:100%;
+}
+#tourismeConteneur .detailFicheContent .tarifs th {
+	background:none !important;
+	border:none;
+	color:#757575;
+	font-weight:normal;
+	font-size:12px;
+}
+#tourismeConteneur .detailFicheContent .tarifs th.libelle {
+	font-weight:bold;
+	font-size:12px;
+	line-height:1.5em;
+	color:#7badd8;
+}
+#tourismeConteneur .detailFicheContent .tarifs  td {
+	border:none;
+	color:#757575;
+	height:22px;
+	font-weight:normal;
+	font-size:12px;
+}
+#tourismeConteneur .detailFicheContent .tarifs .ligne1 td {
+	background:#fff !important;
+}
+#tourismeConteneur .detailFicheContent .tarifs .ligne2 td {
+	background:#f3f3f3 !important;
+}
+#tourismeConteneur .detailFicheContent .tarifs .min {
+	text-align:right;
+	padding:5px;
+}
+#tourismeConteneur .detailFicheContent .tarifs .max {
+	text-align:right;
+	padding:5px 15px 5px 5px;
+}
+#tourismeConteneur .detailFicheContent .tarifs .minmax {
+	text-align:center;
+	padding:5px 5px 5px 40px;
+}
+#tourismeConteneur .detailFicheContent .tarifs .last td {
+	border-bottom:0;
+}
+#tourismeConteneur .detailFicheContent .paiement h3 {
+	margin:0 0 10px 17px;
+}
+#tourismeConteneur .detailFicheContent .paiement ul {
+	margin-left:17px;
+	overflow:hidden;
+}
+#tourismeConteneur .detailFicheContent .paiement li {
+	margin:0 3px;
+	padding:0;
+	display:inline;
+	float:left;
+}
+
+
+
+/*
+ * Mode Détail Manifestations
+ */
+#tourismeConteneur .detailFicheManif .detailHeader,
+#tourismeConteneur .detailFicheManif .detailHeader500 {
+	border:none;
+	font-size:12px;
+	position:relative;
+	border:1px solid #ccc;
+	padding:15px;
+}
+#tourismeConteneur .detailFicheManif .detailPhoto {
+	float:left;
+	width:226px;
+	overflow:hidden;
+	margin:0 20px 4px 0;
+}
+#tourismeConteneur .detailFicheManif .detailManifDates {
+	color:#8d9297;
+	margin-bottom:6px;
+}
+#tourismeConteneur .detailFicheManif .adresse {
+	/*float:left;*/
+}
+#tourismeConteneur .detailFicheManif .adresse span {
+	display:block;
+}
+#tourismeConteneur .detailFicheManif .adresse,
+#tourismeConteneur .detailFicheManif .cpVille {
+	color:#7badd8;
+	font-size:1.2em;
+	font-weight:bold;
+	margin-right:2px;
+}
+#tourismeConteneur .detailFicheManif .telephone,
+#tourismeConteneur .detailFicheManif .siteweb {
+	margin-top:10px;
+}
+#tourismeConteneur .detailFicheManif .siteweb a {
+	color:#7badd8;
+	text-decoration:underline;
+}
+#tourismeConteneur .detailFicheManif .siteweb a:hover {
+	text-decoration:none;
+}
+#tourismeConteneur .detailFicheManif .telephone {
+	color:#717170;
+}
+#tourismeConteneur .detailFicheManif .fax {
+	font-size:12px;
+	color:#717170;
+}
+#tourismeConteneur .detailFicheManif .detailDescriptionManif,
+#tourismeConteneur .detailFicheManif .detailDescriptionManif500 {
+	margin-top:15px;
+	color:#717170;
+	text-align:justify;
+}
+#tourismeConteneur .detailFicheManif .telephonelibelle,
+#tourismeConteneur .detailFicheManif .faxlibelle {
+	float:left;
+	margin-right:2px;
+	font-weight:bold;
+}
+
+
+
+
+#tourismeConteneur .contact {
+	padding:0;
+	position:relative;
+	overflow:hidden;
+}
+#tourismeConteneur .contact .FormResaRecap {
+	float:right;
+	width:242px;
+	height:364px;
+	background:#f3f4f4;
+	padding:4px;
+	color:#717170;
+	font-size:12px;
+	margin-bottom:15px;
+}
+#tourismeConteneur .contact .FormResaRecap .nomlibelle,
+#tourismeConteneur .contact .FormResaRecap .adresselibelle,
+#tourismeConteneur .contact .FormResaRecap .telephonelibelle,
+#tourismeConteneur .contact .FormResaRecap .FormResaRecapLanguesIntitule {
+	font-weight:bold;
+	margin-bottom:0;
+}
+#tourismeConteneur .contact .FormResaRecap div {
+	margin:0 0 6px 6px;
+}
+#tourismeConteneur .contact .FormResaRecap .adresse {
+	margin-bottom:0;
+}
+#tourismeConteneur .contact .FormResaRecap .adresse div {
+	margin:0;
+}
+#tourismeConteneur .contact .FormResaRecap .adresse span {
+	display:block;
+	height:12px;
+}
+#tourismeConteneur .contact .FormResaRecap .cpVille {
+	clear:both;
+}
+#tourismeConteneur .contact .FormResaRecap .telephone {
+	font-weight:normal;
+}
+#tourismeConteneur .contact .FormResaRecap .telephone span {
+	display:block;
+}
+#tourismeConteneur .contact .FormResaRecap div.FormResaPhoto {
+	margin:0 auto;
+	width:222px;
+}
+#tourismeConteneur .contact .FormResaRecapSiteWeb a {
+	color:#717170;
+	text-decoration:underline;
+}
+#tourismeConteneur .contact .FormResaRecapSiteWeb a:hover {
+	text-decoration:none;
+}
+#tourismeConteneur .contact .FormResaRecapLangues ul {
+	margin:0;
+	padding:0;
+}
+#tourismeConteneur .contact .FormResaRecapLangues li {
+	margin:0 2px;
+	padding:0;
+	display:inline;
+}
+
+
+.section-a-laffiche #tourismeConteneur {
+	padding-bottom:20px;
+}
+.section-a-laffiche #detail-contact-form {
+	position:relative;
+	bottom:0;
+	left:0;
+	padding:0;
+	height:410px;
+	width:420px;
+}
+#detail-contact-form {
+	position:absolute;
+	bottom:0;
+	left:0;
+	padding:0;
+	height:436px;
+	width:420px;
+}
+#detail-contact-form label {
+	width:150px;
+	float:left;
+	clear:both;
+	color:#717170;
+	font-size:11px;
+	font-weight:bold;
+	height:20px;
+	line-height:20px;
+	margin:3px 6px 3px 0;
+	text-align:right;
+}
+#detail-contact-form input {
+	width:230px;
+	margin:3px 0 3px 7px;
+	font-size:11px;
+	height:20px;
+	line-height:16px;
+	text-indent:3px;
+	color:#717170;
+	border:1px solid #cacaca;
+	-moz-border-radius : 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+#detail-contact-form textarea {
+	width:230px;
+	margin:3px 0 3px 7px;
+	padding:0;
+	height:100px;
+	font-size:11px;
+	color:#717170;
+	border:1px solid #cacaca;
+	-moz-border-radius : 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+#detail-contact-form #stay_start_id-wrapper,
+#detail-contact-form #stay_end_id-wrapper {
+	position:relative;
+}
+#detail-contact-form .ui-datepicker-trigger {
+	margin-left:3px;
+	cursor:pointer;
+	position:absolute;
+	top:7px;
+	right:32px;
+}
+#detail-contact-form .form-item {
+	margin:0;
+}
+#detail-contact-form .captcha .description {
+	display:none;
+}
+#detail-contact-form .captcha {
+	margin-top:4px;
+	margin-bottom:10px;
+}
+#detail-contact-form .captcha img {
+	float:right;
+	width:230px;
+	margin-right:26px;
+	border:1px solid #cacaca;
+	-moz-border-radius : 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+#detail-contact-form .captcha #edit-captcha-response-wrapper {
+	clear:both;
+}
+#detail-contact-form .captcha #edit-captcha-response-wrapper label {
+	width:230px;
+	margin:0;
+	margin-left:161px;
+}
+#detail-contact-form .captcha #edit-captcha-response-wrapper input {
+	width:230px;
+	margin:0;
+	margin-left:161px;
+}
+
+#detail-contact-form #edit-submit {
+	position:absolute;
+	left:154px;
+	bottom:15px;
+	background:#5080ab url(images/bg_onglet.png) repeat-x top left;
+	color:#f8f7f5 !important;
+	font-size:14px;
+	font-weight:bold;
+	padding:0;
+	text-indent:0;
+	width:232px;
+	height:28px;
+	line-height:28px;
+}
+#detail-contact-form #edit-submit:hover {
+	background:#80b0db url(images/bg_onglet.png) repeat-x top left;
+	cursor:pointer;
+	color:#fff !important;
+}

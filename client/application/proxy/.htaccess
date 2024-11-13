@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !index
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)/?$ index.php?plugin=$1&service=$2&action=$3 [QSA,L]

@@ -1,0 +1,15 @@
+<Search>
+	<Critere operator="or" title="Classification" liste="LS_ControlledVocabulary" cle="02.01.05.01"></Critere>
+	<Criteres title="Classements">
+		<Critere operator="or" title="Classement Préfectoral" liste="LS_Classement" cle="06.04.01.03"></Critere>
+		<Critere operator="or" title="Chaînes" liste="LS_TypeClassement" cle="06.02.02"></Critere>
+		<Critere operator="or" title="Tourisme et handicap" liste="LS_Classement" cle="06.05"></Critere>
+	</Criteres>
+	<Criteres title="Prestations">
+		<Critere operator="and" title="Activités" liste="LS_Prestation" cle="15.02"></Critere>
+		<Critere operator="and" title="Conforts" liste="LS_Prestation" cle="15.03"></Critere>
+		<Critere operator="and" title="Equipements" liste="LS_Prestation" cle="15.05"></Critere>
+		<Critere operator="and" title="Services" liste="LS_Prestation" cle="15.06"></Critere>
+	</Criteres>
+	<Critere operator="or" title="Clientèles" liste="LS_Client" cle="10.02"></Critere>
+</Search>

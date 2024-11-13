@@ -1,0 +1,10 @@
+<Search>
+	<Criteres title="Classification">
+		<Critere operator="or" title="Produits" liste="LS_ControlledVocabulary" cle="02.01.02.01"></Critere>
+		<Critere operator="or" title="Statut de l'exploitant" liste="LS_ControlledVocabulary" cle="02.01.02.02"></Critere>
+	</Criteres>
+	<Criteres title="Classements">
+		<Critere operator="or" title="Tourisme et handicap" liste="LS_Classement" cle="06.05"></Critere>
+	</Criteres>
+	<Critere operator="or" title="Clientèles" liste="LS_Client" cle="10.02"></Critere>
+</Search>

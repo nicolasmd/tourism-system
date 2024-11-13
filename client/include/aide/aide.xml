@@ -1,0 +1,69 @@
+<Help>
+	<Chapitre ref="fiches" title="Fiches" tsDroits="MENU_FICHE">
+		<Chapitre title="Création">
+			<Page title="Création de fiches" content="fiche/creation.html"></Page>
+		</Chapitre>
+		<Chapitre title="Modification">
+			<Page title="Modification de fiches" content="fiche/modification.html"></Page>
+		</Chapitre>
+	</Chapitre>
+	<Chapitre ref="utilisateurs" title="Utilisateurs" tsDroits="MENU_UTILISATEUR">
+		<Page title="Création d'utilisateurs">
+			Création d'utilisateurs...
+		</Page>
+		<Page title="Edition d'utilisateurs">
+			Edition d'utilisateurs...
+		</Page>
+	</Chapitre>
+	<Chapitre ref="profils" title="Profils" tsDroits="MENU_PROFIL">
+		<Page title="Création de profils">
+			Création de profils...
+		</Page>
+		<Page title="Edition de profils">
+			Edition de profils...
+		</Page>
+	</Chapitre>
+	<Chapitre ref="groupes" title="Groupes" tsDroits="MENU_GROUPE" resume="Résumé du chapitre 'Groupes'">
+		<Page title="Gestion des groupes" resume="Résumé de la page 'Création de groupes'">
+			Création de groupes...
+		</Page>
+		<Page title="Edition de groupes">
+			Edition de groupes...
+		</Page>
+	</Chapitre>
+	<Chapitre ref="territoires" title="Territoires" tsDroits="MENU_TERRITOIRE">
+		<Page title="Création de territoires">
+			Création de territoires...
+		</Page>
+		<Page title="Edition de territoires">
+			Edition de territoires...
+		</Page>
+	</Chapitre>
+	<Chapitre ref="champs" title="Champs" tsDroits="MENU_CHAMP">
+		<Page title="Création de champs">
+			Création de champs...
+		</Page>
+		<Page title="Edition de champs">
+			Edition de champs...
+		</Page>
+	</Chapitre>
+	<Chapitre ref="thesaurii" title="Thésaurii" tsDroits="MENU_THESAURUS">
+		<Page title="Création de thésaurii">
+			Création de thésaurii...
+		</Page>
+		<Page title="Edition de thésaurii">
+			Edition de thésaurii...
+		</Page>
+	</Chapitre>
+	<Chapitre ref="plugins" title="Plugins" tsDroits="MENU_PLUGIN">
+		<Page title="Création de plugins">
+			Création de plugins...
+		</Page>
+		<Page title="Edition de plugins">
+			Edition de plugins...
+		</Page>
+	</Chapitre>
+	<Chapitre ref="astuces" title="Astuces">
+		<Page title="Raccourcis clavier" content="raccourci.html"></Page>
+	</Chapitre>
+</Help>

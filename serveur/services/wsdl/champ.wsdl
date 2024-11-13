@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+		
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>			      
+			</complexType>
+			
+			<complexType name="champ">
+				<all>
+					<element name="idChamp" type="xsd:int"/>
+					<element name="idChampParent" nillable="true" type="xsd:int"/>
+					<element name="identifiant" type="xsd:string"/>
+					<element name="libelle" type="xsd:string"/>
+					<element name="stockage" type="xsd:string"/>
+					<element name="xPath" type="xsd:string"/>
+					<element name="scope" type="xsd:string"/>
+					<element name="versioning" type="xsd:string"/>
+					<element name="plugin" type="xsd:string"/>
+					<element name="bordereau" nillable="true" type="xsd:string"/>
+					<element name="liste" nillable="true" type="xsd:string"/>
+					<element name="cle" nillable="true" type="xsd:string"/>
+					<element name="champs" nillable="true" type="xsd:anyType"/>
+				</all>
+			</complexType>
+			
+			<complexType name="ArrayOfChamps">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:champ[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			
+			
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	<message name="createChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="identifiant" type="xsd:string"/>
+		<part name="libelle" type="xsd:string"/>
+		<part name="xpath" type="xsd:string"/>
+		<part name="liste" nillable="true" type="xsd:string"/>
+		<part name="bordereaux" nillable="true" type="xsd:string"/>
+		<part name="idChampParent" nillable="true" type="xsd:int"/>
+	</message>
+	<message name="createChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="idChamp" nillable="true" type="xsd:int"/>
+	</message>
+	
+	<message name="updateChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idChamp" type="xsd:int"/>
+		<part name="identifiant" type="xsd:string"/>
+		<part name="libelle" type="xsd:string"/>
+		<part name="xpath" type="xsd:string"/>
+		<part name="liste" nillable="true" type="xsd:string"/>
+		<part name="bordereaux" nillable="true" type="xsd:string"/>
+	</message>
+	<message name="updateChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xsd:anyType" nillable="true" />
+	</message>
+	
+	<message name="getChampsRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="bordereaux" nillable="true" type="xsd:string"/>
+	</message>
+	<message name="getChampsResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="champs" type="tns:ArrayOfChamps"/>
+	</message>
+	
+	<message name="getChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idChamp" type="xsd:int"/>
+	</message>
+	<message name="getChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="champ" type="tns:champ"/>
+	</message>
+	
+	<message name="getChampByIdentifiantRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="identifiant" type="xsd:string"/>
+	</message>
+	<message name="getChampByIdentifiantResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="champ" type="tns:champ"/>
+	</message>
+	
+	<message name="deleteChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idChamp" type="xsd:int"/>
+	</message>
+	<message name="deleteChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xsd:anyType" nillable="true" />
+	</message>
+	
+	
+	
+	
+	<portType name="CspPorts">
+		<operation name="createChamp">
+			<input  message="tns:createChampRequest"/>
+			<output message="tns:createChampResponse"/>
+		</operation>
+		<operation name="deleteChamp">
+			<input  message="deleteChampRequest"/>
+			<output message="deleteChampResponse"/>
+		</operation>
+		<operation name="getChamp">
+			<input  message="getChampRequest"/>
+			<output message="getChampResponse"/>
+		</operation>
+		<operation name="getChampByIdentifiant">
+			<input  message="getChampByIdentifiantRequest"/>
+			<output message="getChampByIdentifiantResponse"/>
+		</operation>
+		<operation name="getChamps">
+			<input  message="getChampsRequest"/>
+			<output message="getChampsResponse"/>
+		</operation>
+		<operation name="updateChamp">
+			<input  message="tns:updateChampRequest"/>
+			<output message="tns:updateChampResponse"/>
+		</operation>
+	</portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="createChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/champ.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="deleteChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/champ.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="updateChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/champ.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/champ.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getChampByIdentifiant">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/champ.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getChamps">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/champ.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="TourismSystemWebServiceChamp">
+		<documentation>Webservices champ de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}champ.php"/>
+		</port>
+	</service>
+
+</definitions>

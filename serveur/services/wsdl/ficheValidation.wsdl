@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+
+			<complexType name="champValidation">
+				<all>
+					<element name="idValidationChamp" type="xsd:int"/>
+					<element name="idFiche" type="xsd:int"/>
+					<element name="idChamp" type="xsd:int"/>
+					<element name="identifiant" type="xsd:string"/>
+					<element name="libelle" type="xsd:string"/>
+					<element name="valeur" type="xs:anyType"/>
+					<element name="idUtilisateur" type="xsd:int"/>
+					<element name="dateModification" type="xsd:string"/>
+					<element name="etat" type="xsd:string"/>
+					<element name="dateValidation" type="xsd:string"/>
+				</all>
+			</complexType>
+			
+			<complexType name="ArrayOfChampValidation">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:champValidation[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	
+	
+	<message name="getFichesAValiderRequest">
+		<part name="sessionId" type="xsd:string"/>
+	</message>
+	<message name="getFichesAValiderResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="fiches" type="xs:anyType"/>
+	</message>
+	
+	<message name="getChampsFicheAValiderRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idFiche" type="xsd:int"/>
+	</message>
+	<message name="getChampsFicheAValiderResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="champs" type="tns:ArrayOfChampValidation"/>
+	</message>
+	
+	<!--message name="accepteChampFicheRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idFiche" type="xsd:int"/>
+		<part name="idChamp" type="xsd:int"/>
+	</message>
+	<message name="accepteChampFicheResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message-->
+	
+	<message name="refuseChampFicheRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idFiche" type="xsd:int"/>
+		<part name="idChamp" type="xsd:int"/>
+	</message>
+	<message name="refuseChampFicheResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	
+	<portType name="CspPorts">
+		<operation name="getFichesAValider">
+			<input  message="tns:getFichesAValiderRequest"/>
+			<output message="tns:getFichesAValiderResponse"/>
+		</operation>
+		
+		<operation name="getChampsFicheAValider">
+			<input  message="tns:getChampsFicheAValiderRequest"/>
+			<output message="tns:getChampsFicheAValiderResponse"/>
+		</operation>
+		
+		<!--operation name="accepteChampFiche">
+			<input  message="tns:accepteChampFicheRequest"/>
+			<output message="tns:accepteChampFicheResponse"/>
+		</operation-->
+		
+		<operation name="refuseChampFiche">
+			<input  message="tns:refuseChampFicheRequest"/>
+			<output message="tns:refuseChampFicheResponse"/>
+		</operation>
+	</portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="getFichesAValider">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheValidation.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="getChampsFicheAValider">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheValidation.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<!--operation name="accepteChampFiche">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheValidation.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation-->
+		
+		<operation name="refuseChampFiche">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheValidation.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="TourismSystemWebServiceFicheValidation">
+		<documentation>Webservices ficheValidation de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}ficheValidation.php"/>
+		</port>
+	</service>
+
+</definitions>

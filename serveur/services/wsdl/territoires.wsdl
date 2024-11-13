@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+			
+			<complexType name="territoire">
+				<all>
+					<element name="idTerritoire" type="xsd:int"/>
+					<element name="libelle" type="xsd:string"/>
+				</all>
+			</complexType>
+			
+			<complexType name="ArrayOfTerritoires">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:territoire[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			
+			<complexType name="commune">
+				<all>
+				<element name="libelle" type="xsd:string"/>
+					<element name="codeInsee" type="xsd:string"/>
+					<element name="codePostal" type="xsd:int"/>
+					<element name="gpsLat" type="xsd:float"/>
+					<element name="gpsLng" type="xsd:float"/>
+				<element name="prive" type="xsd:string" nillable="true"/>
+				</all>			      
+			</complexType>
+			
+			<complexType name="ArrayOfCommunes">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:commune[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	<message name="getTerritoiresRequest">
+		<part name="sessionId" type="xsd:string"/>
+	</message>
+	<message name="getTerritoiresResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="territoires" nillable="true" type="tns:ArrayOfTerritoires"/>
+	</message>
+	
+	<message name="getCommunesByTerritoireRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idTerritoire" type="xsd:int"/>
+	</message>
+	<message name="getCommunesByTerritoireResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="communes" nillable="true" type="xsd:anyType"/>
+	</message>
+	
+	<message name="getThesaurusByTerritoireRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idTerritoire" type="xsd:int"/>
+	</message>
+	<message name="getThesaurusByTerritoireResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="thesaurii" nillable="true" type="xsd:anyType"/>
+	</message>
+	
+	<message name="addThesaurusTerritoireRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idTerritoire" type="xsd:int"/>
+		<part name="codeThesaurus" type="xsd:string"/>
+	</message>
+	<message name="addThesaurusTerritoireResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="deleteThesaurusTerritoireRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idTerritoire" type="xsd:int"/>
+		<part name="codeThesaurus" type="xsd:string"/>
+	</message>
+	<message name="deleteThesaurusTerritoireResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="createTerritoireRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="libelle" type="xsd:string"/>
+	</message>
+	<message name="createTerritoireResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="idTerritoire" nillable="true" type="xsd:int"/>
+	</message>
+	
+	<message name="updateTerritoireRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idTerritoire" type="xsd:int"/>
+		<part name="libelle" type="xsd:string"/>
+	</message>
+	<message name="updateTerritoireResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="deleteTerritoireRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idTerritoire" type="xsd:int"/>
+	</message>
+	<message name="deleteTerritoireResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="addCommuneTerritoireRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idTerritoire" type="xsd:int"/>
+		<part name="codeInsee" type="xsd:string"/>
+	</message>
+	<message name="addCommuneTerritoireResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="setCommuneTerritoirePriveRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idTerritoire" type="xsd:int"/>
+		<part name="codeInsee" type="xsd:string"/>
+		<part name="prive" type="xsd:boolean"/>
+	</message>
+	<message name="setCommuneTerritoirePriveResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="deleteCommuneTerritoireRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idTerritoire" type="xsd:int"/>
+		<part name="codeInsee" type="xsd:string"/>
+	</message>
+	<message name="deleteCommuneTerritoireResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	
+	
+	
+	<portType name="CspPorts">
+		<operation name="getTerritoires">
+			<input  message="tns:getTerritoiresRequest"/>
+			<output message="tns:getTerritoiresResponse"/>
+		</operation>
+		<operation name="getCommunesByTerritoire">
+			<input  message="getCommunesByTerritoireRequest"/>
+			<output message="getCommunesByTerritoireResponse"/>
+		</operation>
+		<operation name="getThesaurusByTerritoire">
+			<input  message="getThesaurusByTerritoireRequest"/>
+			<output message="getThesaurusByTerritoireResponse"/>
+		</operation>
+		<operation name="createTerritoire">
+			<input  message="createTerritoireRequest"/>
+			<output message="createTerritoireResponse"/>
+		</operation>
+		<operation name="updateTerritoire">
+			<input  message="updateTerritoireRequest"/>
+			<output message="updateTerritoireResponse"/>
+		</operation>
+		<operation name="deleteTerritoire">
+			<input  message="tns:deleteTerritoireRequest"/>
+			<output message="tns:deleteTerritoireResponse"/>
+		</operation>
+		<operation name="addCommuneTerritoire">
+			<input  message="addCommuneTerritoireRequest"/>
+			<output message="addCommuneTerritoireResponse"/>
+		</operation>
+		<operation name="setCommuneTerritoirePrive">
+			<input  message="setCommuneTerritoirePriveRequest"/>
+			<output message="setCommuneTerritoirePriveResponse"/>
+		</operation>
+		<operation name="deleteCommuneTerritoire">
+			<input  message="deleteCommuneTerritoireRequest"/>
+			<output message="deleteCommuneTerritoireResponse"/>
+		</operation>
+		<operation name="addThesaurusTerritoire">
+			<input  message="addThesaurusTerritoireRequest"/>
+			<output message="addThesaurusTerritoireResponse"/>
+		</operation>
+		<operation name="deleteThesaurusTerritoire">
+			<input  message="deleteThesaurusTerritoireRequest"/>
+			<output message="deleteThesaurusTerritoireResponse"/>
+		</operation>
+	</portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="getTerritoires">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getCommunesByTerritoire">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getThesaurusByTerritoire">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="createTerritoire">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="updateTerritoire">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="deleteTerritoire">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="addCommuneTerritoire">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="setCommuneTerritoirePrive">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="deleteCommuneTerritoire">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="addThesaurusTerritoire">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="deleteThesaurusTerritoire">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/territoires.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="TourismSystemWebServiceTerritoires">
+		<documentation>Webservices territoires de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}territoires.php"/>
+		</port>
+	</service>
+
+</definitions>

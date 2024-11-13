@@ -1,0 +1,14 @@
+<Search>
+	<Criteres title="Classification">
+		<Critere operator="or" title="Activités culturelles" liste="LS_ControlledVocabulary" cle="02.01.01.01"></Critere>
+		<Critere operator="or" title="Activités sportives" liste="LS_ControlledVocabulary" cle="02.01.01.02"></Critere>
+	</Criteres>
+	<Criteres title="Classements">
+		<Critere operator="or" title="Tourisme et handicap" liste="LS_Classement" cle="06.05"></Critere>
+	</Criteres>
+	<Criteres title="Prestations">
+		<Critere operator="and" title="Activités" liste="LS_Prestation" cle="15.02"></Critere>
+		<Critere operator="and" title="Services" liste="LS_Prestation" cle="15.06"></Critere>
+	</Criteres>
+	<Critere operator="or" title="Clientèles" liste="LS_Client" cle="10.02"></Critere>
+</Search>

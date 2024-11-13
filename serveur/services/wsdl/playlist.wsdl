@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+			
+			
+			
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+
+	
+	<message name="getPlaylistsRequest">
+		<part name="sessionId" type="xsd:string"/>
+	</message>
+	<message name="getPlaylistsResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="playlists" nillable="true" type="xsd:anyType"/>
+	</message>
+	
+	<message name="getPlaylistRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idPlaylist" type="xsd:string"/>
+	</message>
+	<message name="getPlaylistResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="playlist" nillable="true" type="xsd:anyType"/>
+	</message>
+	
+	<message name="createPlaylistRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="nomPlaylist" type="xsd:string"/>
+		<part name="type" type="xsd:string"/>
+	</message>
+	<message name="createPlaylistResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="updatePlaylistRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idPlaylist" type="xsd:string"/>
+		<part name="nomPlaylist" type="xsd:string"/>
+		<part name="type" type="xsd:string"/>
+	</message>
+	<message name="updatePlaylistResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="deletePlaylistRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idPlaylist" type="xsd:string"/>
+	</message>
+	<message name="deletePlaylistResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	
+	
+	<portType name="CspPorts">
+
+		<operation name="getPlaylists">
+			<input  message="tns:getPlaylistsRequest"/>
+			<output message="tns:getPlaylistsResponse"/>
+		</operation>
+
+		<operation name="getPlaylist">
+			<input  message="tns:getPlaylistRequest"/>
+			<output message="tns:getPlaylistResponse"/>
+		</operation>
+
+		<operation name="createPlaylist">
+			<input  message="tns:createPlaylistRequest"/>
+			<output message="tns:createPlaylistResponse"/>
+		</operation>
+
+		<operation name="updatePlaylist">
+			<input  message="tns:updatePlaylistRequest"/>
+			<output message="tns:updatePlaylistResponse"/>
+		</operation>
+
+		<operation name="deletePlaylist">
+			<input  message="tns:deletePlaylistRequest"/>
+			<output message="tns:deletePlaylistResponse"/>
+		</operation>
+		
+	</portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		
+		
+		<operation name="getPlaylists">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/playlist.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="getPlaylist">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/playlist.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="createPlaylist">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/playlist.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="updatePlaylist">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/playlist.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="deletePlaylist">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/playlist.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+	</binding>
+	
+	<service name="TourismSystemWebServiceUtilisateur">
+		<documentation>Webservices playlist de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}playlist.php"/>
+		</port>
+	</service>
+
+</definitions>

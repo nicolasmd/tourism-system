@@ -1,0 +1,14 @@
+<Search>
+	<Criteres title="Classification">
+		<Critere operator="or" title="Organismes de tourisme institutionnels" liste="LS_ControlledVocabulary" cle="02.01.10.01"></Critere>
+		<Critere operator="or" title="Organismes réceptifs" liste="LS_ControlledVocabulary" cle="02.01.10.02"></Critere>
+		<Critere operator="or" title="Services d'informations touristiques privés" liste="LS_ControlledVocabulary" cle="02.01.10.03"></Critere>
+		<Critere operator="or" title="Types d'entreprise" liste="LS_ControlledVocabulary" cle="02.01.10.04"></Critere>
+		<Critere operator="or" title="Types de structures" liste="LS_ControlledVocabulary" cle="02.01.10.05"></Critere>
+	</Criteres>
+	<Criteres title="Classements">
+		<Critere operator="or" title="Classement Préfectoral" liste="LS_Classement" cle="06.04.01.01"></Critere>
+		<Critere operator="or" title="Tourisme et handicap" liste="LS_Classement" cle="06.05"></Critere>
+	</Criteres>
+	<Critere operator="or" title="Clientèles" liste="LS_Client" cle="10.02"></Critere>
+</Search>

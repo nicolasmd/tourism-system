@@ -1,0 +1,12 @@
+<Search>
+	<Criteres title="Classification">
+		<Critere operator="or" title="Catégories" liste="LS_ControlledVocabulary" cle="02.01.03.01"></Critere>
+		<Critere operator="or" title="Evénements" liste="LS_ControlledVocabulary" cle="02.01.03.02"></Critere>
+		<Critere operator="or" title="Thèmes" liste="LS_ControlledVocabulary" cle="02.01.03.03"></Critere>
+		<Critere operator="or" title="Types" liste="LS_ControlledVocabulary" cle="02.01.03.04"></Critere>
+	</Criteres>
+	<Criteres title="Classements">
+		<Critere operator="or" title="Tourisme et handicap" liste="LS_Classement" cle="06.05"></Critere>
+	</Criteres>
+	<Critere operator="or" title="Clientèles" liste="LS_Client" cle="10.02"></Critere>
+</Search>

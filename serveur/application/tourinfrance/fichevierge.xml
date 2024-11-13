@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tif:OI xsi:schemaLocation="http://www.tourinfrance.net/Tourinfrance3/ http://docs.tourism-system.fr/schema/oi.xsd" 
+		xmlns:tif="http://www.tourinfrance.net/Tourinfrance3/" 
+		xmlns:tif22="http://www.tourinfrance.net/tourinfrance22/" 
+		xmlns:dc="http://purl.org/dc/elements/1.1/" 
+		xmlns:dcterms="http://purl.org/dc/terms/" 
+		xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<tif:DublinCore>
+		<dc:publisher>Tourism System</dc:publisher>
+		<dc:identifier>{identifier}</dc:identifier>
+		<dcterms:created>{created}</dcterms:created>
+		<dcterms:modified>{created}</dcterms:modified>
+		<tif:Classification code="{cleClassification}" xml:lang="fr">{libelleClassification}</tif:Classification>
+	</tif:DublinCore>
+	<tif:Update/>
+	<tif:Multimedia/>
+	<tif:Contacts>
+		<tif:DetailContact type="04.03.13" libelle="Etab/Lieu/Structure">
+			<tif:Adresses>
+				<tif:DetailAdresse>
+					<tif:CodePostal>{code_postal}</tif:CodePostal>
+					<tif:Commune code="{code_commune}">{commune}</tif:Commune>
+				</tif:DetailAdresse>
+			</tif:Adresses>
+		</tif:DetailContact>
+	</tif:Contacts>
+	<tif:InformationsLegales/>
+	<tif:Classements/>
+	<tif:PrestationsLiees/>
+	<tif:Geolocalisations/>
+	<tif:Periodes/>
+	<tif:Clienteles/>
+	<tif:Langues/>
+	<tif:ModesReservations/>
+	<tif:Tarifs/>
+	<tif:Capacites/>
+	<tif:OffresPrestations/>
+	<tif:DescriptionsComplementaires/>
+	<tif:Thesaurus/>
+	<tif:Itineraires/>
+	<tif:Plannings/>
+</tif:OI>

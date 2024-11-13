@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+			
+			
+			
+			
+			
+			<complexType name="ArrayOfDroitsChamp">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:DroitChamp[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			
+			<complexType name="DroitChamp">
+				<all>
+					<element name="visualisation" nillable="true" type="xsd:boolean"/>
+					<element name="modification" nillable="true" type="xsd:boolean"/>
+					<element name="validation" nillable="true" type="xsd:boolean"/>
+				</all>
+			</complexType>
+			
+			
+			
+			<complexType name="ArrayOfDroitsFiche">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="DroitFiche[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="DroitFiche">
+				<all>
+					<element name="visualisation" nillable="true" type="xsd:boolean"/>
+					<element name="modification" nillable="true" type="xsd:boolean"/>
+					<element name="validation" nillable="true" type="xsd:boolean"/>
+					<element name="suppressionFiches" nillable="true" type="xsd:boolean"/>
+				</all>
+			</complexType>
+			
+			
+			<complexType name="ArrayOfDroitsTerritoire">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="DroitTerritoire[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="DroitTerritoire">
+				<all>
+					<element name="visualisation" nillable="true" type="xsd:boolean"/>
+					<element name="modification" nillable="true" type="xsd:boolean"/>
+					<element name="validation" nillable="true" type="xsd:boolean"/>
+					<element name="suppressionFiches" nillable="true" type="xsd:boolean"/>
+					<element name="creationFiches" nillable="true" type="xsd:boolean"/>
+					<element name="administration" nillable="true" type="xsd:boolean"/>
+				</all>
+			</complexType>
+
+			
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	
+	
+	<message name="setDroitFicheRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idUtilisateur" type="xsd:int"/>
+		<part name="idFiche" type="xsd:int"/>
+		<part name="droit" type="xs:anyType"/>
+	</message>
+	<message name="setDroitFicheResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="setDroitFicheChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idUtilisateur" type="xsd:int"/>
+		<part name="idFiche" type="xsd:int"/>
+		<part name="idChamp" type="xsd:int"/>
+		<part name="droit" type="xs:anyType"/>
+	</message>
+	<message name="setDroitFicheChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="getDroitsFicheRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idUtilisateur" nillable="true" type="xsd:string"/>
+	</message>
+	<message name="getDroitsFicheResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="droitsFiche" type="tns:ArrayOfDroitsFiche"/>
+	</message>
+	
+	<message name="getDroitFicheRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idUtilisateur" nillable="true" type="xsd:string"/>
+		<part name="idFiche" nillable="true" type="xsd:string"/>
+	</message>
+	<message name="getDroitFicheResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="droitFiche" type="xs:anyType"/>
+	</message>
+	
+	<message name="getDroitFicheChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idUtilisateur" type="xsd:int"/>
+		<part name="idFiche" type="xsd:int"/>
+		<part name="idChamp" type="xsd:int"/>
+	</message>
+	<message name="getDroitFicheChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="droitsFicheChamp" type="tns:ArrayOfDroitsChamp"/>
+	</message>
+	
+	<message name="deleteDroitFicheRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idUtilisateur" type="xsd:int"/>
+		<part name="idFiche" type="xsd:int"/>
+	</message>
+	<message name="deleteDroitFicheResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="deleteDroitFicheChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idUtilisateur" type="xsd:int"/>
+		<part name="idFiche" type="xsd:int"/>
+		<part name="idFChamp" type="xsd:int"/>
+	</message>
+	<message name="deleteDroitFicheChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="setDroitFicheProfilRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idUtilisateur" type="xsd:int"/>
+		<part name="idFiche" type="xsd:int"/>
+		<part name="idProfil" type="xsd:int"/>
+	</message>
+	<message name="setDroitFicheProfilResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+	<message name="unsetDroitFicheProfilRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idUtilisateur" type="xsd:int"/>
+		<part name="idFiche" type="xsd:int"/>
+	</message>
+	<message name="unsetDroitFicheProfilResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+	
+
+	
+	
+	
+	<portType name="CspPorts">
+		<operation name="setDroitFiche">
+			<input  message="tns:setDroitFicheRequest"/>
+			<output message="tns:setDroitFicheResponse"/>
+		</operation>
+		
+		<operation name="setDroitFicheChamp">
+			<input  message="tns:setDroitFicheChampRequest"/>
+			<output message="tns:setDroitFicheChampResponse"/>
+		</operation>
+		
+		<operation name="getDroitsFiche">
+			<input  message="tns:getDroitsFicheRequest"/>
+			<output message="tns:getDroitsFicheResponse"/>
+		</operation>
+		
+		<operation name="getDroitFiche">
+			<input  message="tns:getDroitFicheRequest"/>
+			<output message="tns:getDroitFicheResponse"/>
+		</operation>
+		
+		<operation name="getDroitFicheChamp">
+			<input  message="tns:getDroitFicheChampRequest"/>
+			<output message="tns:getDroitFicheChampResponse"/>
+		</operation>
+		
+		<operation name="deleteDroitFiche">
+			<input  message="tns:deleteDroitFicheRequest"/>
+			<output message="tns:deleteDroitFicheResponse"/>
+		</operation>
+		
+		<operation name="deleteDroitFicheChamp">
+			<input  message="tns:deleteDroitFicheChampRequest"/>
+			<output message="tns:deleteDroitFicheChampResponse"/>
+		</operation>
+		
+		<operation name="setDroitFicheProfil">
+			<input  message="tns:setDroitFicheProfilRequest"/>
+			<output message="tns:setDroitFicheProfilResponse"/>
+		</operation>
+		
+		<operation name="unsetDroitFicheProfil">
+			<input  message="tns:unsetDroitFicheProfilRequest"/>
+			<output message="tns:unsetDroitFicheProfilResponse"/>
+		</operation>
+		
+
+	</portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="setDroitFiche">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/utilisateurDroitFiche.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="setDroitFicheChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/utilisateurDroitFiche.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="getDroitsFiche">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/utilisateurDroitFiche.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="getDroitFiche">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/utilisateurDroitFiche.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="getDroitFicheChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/utilisateurDroitFiche.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="deleteDroitFiche">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/utilisateurDroitFiche.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="deleteDroitFicheChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/utilisateurDroitFiche.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="setDroitFicheProfil">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/utilisateurDroitFiche.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="unsetDroitFicheProfil">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/utilisateurDroitFiche.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+	</binding>
+	
+	<service name="TourismSystemWebServiceUtilisateurDroitFiche">
+		<documentation>Webservices utilisateurDroitFiche de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}utilisateurDroitFiche.php"/>
+		</port>
+	</service>
+
+</definitions>

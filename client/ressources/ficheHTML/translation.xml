@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<traductions>
+	<langue code="fr">
+		<item fr="en">&lt;img src="http://medias.tourism-system.fr/tourisme/drapeaux/UK.png" alt="" title=""/&gt;</item>
+		<item fr="fr">&lt;img src="http://medias.tourism-system.fr/tourisme/drapeaux/France.png" alt="" title=""/&gt;</item>
+		<item fr="de">&lt;img src="http://medias.tourism-system.fr/tourisme/drapeaux/Germany.png" alt="" title=""/&gt;</item>
+		<item fr="Tél">Tél : </item>
+		<item fr="Fax">Fax : </item>
+		<item fr="Nom">Nom : </item>
+	</langue>
+	<langue code="en">
+		<item fr="en">&lt;img src="http://medias.tourism-system.fr/tourisme/drapeaux/UK.png" alt="" title=""/&gt;</item>
+		<item fr="fr">&lt;img src="http://medias.tourism-system.fr/tourisme/drapeaux/France.png" alt="" title=""/&gt;</item>
+		<item fr="de">&lt;img src="http://medias.tourism-system.fr/tourisme/drapeaux/Germany.png" alt="" title=""/&gt;</item>
+		<item fr="Nom">Name : </item>
+		<item fr="Mode Fiche">Detail Mode</item>
+		<item fr="Tél">Phone: </item>
+		<item fr="Fax">Fax: </item>
+		<item fr="Prestations">Prestations_en</item>
+		<item fr="Activités">Activities</item>
+		<item fr="Conforts">Conforts_en</item>
+		<item fr="Equipements">Equipments</item>
+		<item fr="Services">Services_en</item>
+		<item fr="Périodes d'ouverture">Périodes d'ouvertures_en</item>
+		<item fr="du">from</item>
+		<item fr="au">to</item>
+		<item fr="Langues parlées">Spoken langages</item>
+		<item fr="Mode de paiement">Mode de paiement_en</item>
+		<item fr="Disponibilités">Disponibilités_en</item>
+		<item fr="Site Internet">Website</item>
+		<item fr="Contact">Contact</item>
+		<item fr="Réserver">Réserver_en</item>
+		<item fr="Tarifs">Tarifs_en</item>
+	</langue>
+</traductions>

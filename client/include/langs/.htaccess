@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !plugin_
+RewriteRule ^([^\_]*)_([^\.]*)\.js$ $2/$1.js [QSA,L]
+
+RewriteCond %{REQUEST_URI} plugin_
+RewriteRule ^plugin_([^\_]*)_([^\_]*)_([^\.]*)\.js$ ../../plugins/$1/langs/$3/$2.js [QSA,L]

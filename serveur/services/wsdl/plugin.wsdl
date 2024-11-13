@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+		</xsd:schema>
+	</wsdl:types>
+
+
+	<message name="getAllPluginsRequest">
+		<part name="sessionId" type="xsd:string"/>
+	</message>
+	<message name="getAllPluginsResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="plugins" nillable="true" type="xsd:anyType"/>
+	</message>
+
+	<message name="getPluginsRequest">
+		<part name="sessionId" type="xsd:string"/>
+	</message>
+	<message name="getPluginsResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="plugins" nillable="true" type="xsd:anyType"/>
+	</message>
+
+	<message name="getPluginGroupesRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="nomPlugin" type="xsd:string"/>
+	</message>
+	<message name="getPluginGroupesResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="groupes" nillable="true" type="xsd:anyType"/>
+	</message>
+
+	<message name="enablePluginRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="nomPlugin" type="xsd:string"/>
+	</message>
+	<message name="enablePluginResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+
+	<message name="disablePluginRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="nomPlugin" type="xsd:string"/>
+	</message>
+	<message name="disablePluginResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+
+	<message name="installPluginRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="nomPlugin" type="xsd:string"/>
+		<part name="password" type="xsd:string" nillable="true" />
+	</message>
+	<message name="installPluginResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+
+	<message name="uninstallPluginRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="nomPlugin" type="xsd:string"/>
+	</message>
+	<message name="uninstallPluginResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+
+	<message name="updatePluginRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="nomPlugin" type="xsd:string"/>
+	</message>
+	<message name="updatePluginResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+
+
+
+	<portType name="CspPorts">
+
+		<operation name="getAllPlugins">
+			<input  message="tns:getAllPluginsRequest"/>
+			<output message="tns:getAllPluginsResponse"/>
+		</operation>
+
+		<operation name="getPlugins">
+			<input  message="tns:getPluginsRequest"/>
+			<output message="tns:getPluginsResponse"/>
+		</operation>
+
+		<operation name="getPluginGroupes">
+			<input  message="tns:getPluginGroupesRequest"/>
+			<output message="tns:getPluginGroupesResponse"/>
+		</operation>
+
+		<operation name="enablePlugin">
+			<input  message="tns:enablePluginRequest"/>
+			<output message="tns:enablePluginResponse"/>
+		</operation>
+
+		<operation name="disablePlugin">
+			<input  message="tns:disablePluginRequest"/>
+			<output message="tns:disablePluginResponse"/>
+		</operation>
+
+		<operation name="installPlugin">
+			<input  message="tns:installPluginRequest"/>
+			<output message="tns:installPluginResponse"/>
+		</operation>
+
+		<operation name="uninstallPlugin">
+			<input  message="tns:uninstallPluginRequest"/>
+			<output message="tns:uninstallPluginResponse"/>
+		</operation>
+
+		<operation name="updatePlugin">
+			<input  message="tns:updatePluginRequest"/>
+			<output message="tns:updatePluginResponse"/>
+		</operation>
+
+	</portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+
+
+		<operation name="getAllPlugins">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/plugin.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="getPlugins">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/plugin.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="getPluginGroupes">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/plugin.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="enablePlugin">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/plugin.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="disablePlugin">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/plugin.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="installPlugin">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/plugin.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="uninstallPlugin">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/plugin.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="updatePlugin">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/plugin.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+	</binding>
+
+	<service name="TourismSystemWebServiceUtilisateur">
+		<documentation>Webservices plugin de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}plugin.php"/>
+		</port>
+	</service>
+
+</definitions>

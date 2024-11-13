@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+			
+			<complexType name="commune">
+				<all>
+					<element name="libelle" type="xsd:string"/>
+					<element name="codeInsee" type="xsd:string"/>
+					<element name="codePostal" type="xsd:int"/>
+					<element name="gpsLat" type="xsd:float"/>
+					<element name="gpsLng" type="xsd:float"/>
+				</all>			      
+			</complexType>
+			
+			<complexType name="ArrayOfCommunes">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:commune[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	<message name="getCommuneRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codeInsee" type="xsd:string"/>
+	</message>
+	<message name="getCommuneResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="commune" nillable="true" type="tns:commune"/>
+	</message>
+	
+	
+	
+	
+	<portType name="CspPorts">
+		<operation name="getCommune">
+			<input  message="tns:getCommuneRequest"/>
+			<output message="tns:getCommuneResponse"/>
+		</operation>
+	</portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="getCommune">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/commune.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="TourismSystemWebServiceCommune">
+		<documentation>Webservices commune de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}commune.php"/>
+		</port>
+	</service>
+
+</definitions>

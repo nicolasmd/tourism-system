@@ -1,0 +1,22 @@
+<Search>
+	<Criteres title="Classification">
+		<Critere operator="or" title="Catégories de musées" liste="LS_ControlledVocabulary" cle="02.01.11.01"></Critere>
+		<Critere operator="or" title="Catégories des parcs et jardins" liste="LS_ControlledVocabulary" cle="02.01.11.02"></Critere>
+		<Critere operator="or" title="Catégories des sites et monuments historiques" liste="LS_ControlledVocabulary" cle="02.01.11.03"></Critere>
+		<Critere operator="or" title="Equipements principaux" liste="LS_ControlledVocabulary" cle="02.01.11.04"></Critere>
+		<Critere operator="or" title="Styles architecturaux des parcs et jardins" liste="LS_ControlledVocabulary" cle="02.01.11.05"></Critere>
+		<Critere operator="or" title="Styles architecturaux des sites et monuments historiques" liste="LS_ControlledVocabulary" cle="02.01.11.06"></Critere>
+		<Critere operator="or" title="Thèmes des musées" liste="LS_ControlledVocabulary" cle="02.01.11.07"></Critere>
+		<Critere operator="or" title="Thèmes des parcs et jardins" liste="LS_ControlledVocabulary" cle="02.01.11.08"></Critere>
+		<Critere operator="or" title="Thèmes des sites et monuments historiques" liste="LS_ControlledVocabulary" cle="02.01.11.09"></Critere>
+		<Critere operator="or" title="Types des centres d'interprétation" liste="LS_ControlledVocabulary" cle="02.01.11.10"></Critere>
+	</Criteres>
+	<Criteres title="Classements">
+		<Critere operator="or" title="Tourisme et handicap" liste="LS_Classement" cle="06.05"></Critere>
+	</Criteres>
+	<Criteres title="Prestations">
+		<Critere operator="and" title="Activités" liste="LS_Prestation" cle="15.02"></Critere>
+		<Critere operator="and" title="Services" liste="LS_Prestation" cle="15.06"></Critere>
+	</Criteres>
+	<Critere operator="or" title="Clientèles" liste="LS_Client" cle="10.02"></Critere>
+</Search>

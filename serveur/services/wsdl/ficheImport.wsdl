@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	<message name="importFicheRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="xmlTif" type="xsd:string"/>
+	</message>
+	<message name="importFicheResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="fiche" type="xs:anyType" />
+	</message>
+	
+	<message name="restoreFicheRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="dateDebut" type="xsd:string"/>
+		<part name="dateFin" type="xsd:string"/>
+	</message>
+	<message name="restoreFicheResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="versions" type="xs:anyType" />
+	</message>
+	
+	<message name="buildFicheXpathRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="champs" type="xs:anyType"/>
+		<part name="xml" type="xsd:string" nillable="true"/>
+		<part name="sort" type="xsd:boolean" nillable="true"/>
+	</message>
+	<message name="buildFicheXpathResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="xml" type="xsd:string" />
+	</message>
+	
+	
+	<portType name="CspPorts">
+		<operation name="importFiche">
+			<input  message="tns:importFicheRequest"/>
+			<output message="tns:importFicheResponse"/>
+		</operation>
+		
+		<operation name="restoreFiche">
+			<input  message="tns:restoreFicheRequest"/>
+			<output message="tns:restoreFicheResponse"/>
+		</operation>
+		
+		<operation name="buildFicheXpath">
+			<input  message="tns:buildFicheXpathRequest"/>
+			<output message="tns:buildFicheXpathResponse"/>
+		</operation>
+	</portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="importFiche">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheImport.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="restoreFiche">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheImport.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="buildFicheXpath">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheImport.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="TourismSystemWebServiceFicheExport">
+		<documentation>Webservices ficheImport de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}ficheImport.php"/>
+		</port>
+	</service>
+
+</definitions>

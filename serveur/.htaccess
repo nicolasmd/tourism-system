@@ -1,0 +1,15 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !index.php
+RewriteCond %{REQUEST_URI} !wsdl.php
+RewriteCond %{REQUEST_URI} !xml.php
+RewriteRule ^(([^/]*)/)?([^/\.]*)\.php(.*)$ index.php?plugin=$2&service=$3 [QSA,L]
+
+RewriteRule ^([^\.]*)\.wsdl$ wsdl.php?wsdl=$1 [L]
+
+RewriteRule ^([0-9]+)-?([0-9]+)?\.xml$ xml.php?idFiche=$1&idFicheVersion=$2 [QSA,L]
+
+php_value max_execution_time 300
+php_value display_errors on
+# E_ALL & ~E_NOTICE
+php_value error_reporting 30711

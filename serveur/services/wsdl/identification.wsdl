@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	<message name="identificationRequest">
+		<part name="email" type="xsd:string"/>
+		<part name="password" type="xsd:string"/>
+	</message>
+	<message name="identificationResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="sessionId" type="xsd:string"/>
+	</message>
+
+	<portType name="CspPorts">
+		<operation name="identification">
+			<input  message="tns:identificationRequest"/>
+			<output message="tns:identificationResponse"/>
+		</operation>
+	</portType>
+
+	<binding name="wsBinding" type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="identification">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/identification.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="TourismSystemWebServiceidentification">
+		<documentation>Webservices d'identification de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}identification.php"/>
+		</port>
+	</service>
+
+</definitions>

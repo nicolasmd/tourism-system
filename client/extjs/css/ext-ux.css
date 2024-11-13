@@ -1,0 +1,566 @@
+/*!
+ * Ext JS Library 3.3.1
+ * Copyright(c) 2006-2010 Sencha Inc.
+ * licensing@sencha.com
+ * http://www.sencha.com/license
+ */
+.x-grouptabs-panel {
+    background-color: #4E78B1;
+    border: solid 15px #4E78B1;
+}
+.x-tab-panel-left .x-grouptabs-panel-header,
+.x-tab-panel-right .x-grouptabs-panel-header {
+    float: left;
+    border: 0;
+    background: transparent;
+}
+.x-tab-panel-right .x-grouptabs-panel-header {
+    float:right;
+}
+.x-tab-panel-left .x-grouptabs-bwrap {
+    float: right;
+    position: relative;
+}
+.x-tab-panel-right .x-grouptabs-bwrap {
+    float: left;
+    position: relative;
+}
+.x-tab-panel-left ul.x-grouptabs-strip,
+.x-tab-panel-right ul.x-grouptabs-strip {
+    width: auto;
+	display: block;
+}
+.x-tab-panel-left ul.x-grouptabs-strip li,
+.x-tab-panel-right ul.x-grouptabs-strip li {
+    padding: 6px 0 2px 6px;
+    float: none;
+    margin: 0;
+    position: relative;
+    clear: both;
+}
+.x-tab-panel-left .x-tab-panel-header ul.x-grouptabs-strip a.x-grouptabs-text,
+.x-tab-panel-right .x-tab-panel-header ul.x-grouptabs-strip a.x-grouptabs-text{
+	font-size: 13px;
+	line-height: 18px;
+	cursor: pointer;
+}
+
+.x-tab-panel-left .x-tab-panel-header ul.x-grouptabs-strip a.x-grouptabs-text{
+    padding-left: 18px;
+}
+.x-tab-panel-right .x-tab-panel-header ul.x-grouptabs-strip a.x-grouptabs-text{
+    padding-right: 18px;
+}
+
+.x-tab-panel-left .x-tab-panel-header ul.x-grouptabs-sub a.x-grouptabs-text,
+.x-tab-panel-right .x-tab-panel-header ul.x-grouptabs-sub a.x-grouptabs-text{
+	font-size: 12px;
+    padding: 0;  
+}
+
+.x-tab-panel-left .x-tab-panel-header ul.x-grouptabs-sub a.x-grouptabs-text{
+	margin-left: 4px;
+}
+.x-tab-panel-right .x-tab-panel-header ul.x-grouptabs-sub a.x-grouptabs-text{
+	margin-right: 4px;
+}
+
+.x-grouptabs-panel .x-grouptabs-strip a.x-grouptabs-text{
+    overflow: hidden;
+    white-space: nowrap;
+	display: block;
+    color: #DFE8F6;
+    font-family: tahoma, arial, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+.x-tab-panel-right .x-grouptabs-strip a.x-grouptabs-text {
+    text-align: right;
+}
+
+.x-grouptabs-panel .x-grouptabs-strip-active a.x-grouptabs-text {
+    color: #395B8E;
+}
+
+.x-grouptabs-panel ul.x-grouptabs-sub a.x-grouptabs-text {
+	font-weight: normal;
+}
+.x-tab-joint {
+    position: absolute;
+    width: 3px;
+    top: 1px;
+    background: #fff;
+    z-index: 8999;
+}
+
+.x-grouptabs-panel .x-grouptabs-panel-body {
+    border: 1px solid #999;
+}
+
+.x-grouptabs-panel ul.x-grouptabs-strip li {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+	border-left: 1px solid transparent;
+}
+
+.x-grouptabs-panel ul.x-grouptabs-strip li.x-grouptabs-strip-active {
+    border: 0;
+    background: #fff;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+.x-tab-panel-left ul.x-grouptabs-strip li.x-grouptabs-strip-active {
+    border-left: 1px solid #999;
+}
+.x-tab-panel-right ul.x-grouptabs-strip li.x-grouptabs-strip-active {
+    border-right: 1px solid #999;
+}
+
+.x-grouptabs-panel li.x-grouptabs-strip-active ul.x-grouptabs-sub li.x-grouptabs-strip-active{
+    background-color: #EDEEF0;
+}
+
+.x-grouptabs-panel li.x-grouptabs-strip-active ul.x-grouptabs-sub {
+    background-color: transparent;
+}
+
+.x-grouptabs-panel li.x-grouptabs-strip-active ul.x-grouptabs-sub li {
+    border-color: transparent;
+}
+
+/* Tab corners */
+.x-grouptabs-panel .x-grouptabs-corner {
+    background-image: url('../images/ux/grouptab/x-grouptabs-corners.gif');
+    display: none;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    font-size: 1px;
+    line-height: 6px;
+    overflow: hidden;
+    zoom:1;
+}
+.x-grouptabs-panel .x-grouptabs-strip-active .x-grouptabs-corner {
+    display: block;
+}
+.x-grouptabs-panel .x-grouptabs-main.x-grouptabs-strip-active ul.x-grouptabs-sub .x-grouptabs-corner {
+	display: none;
+}
+
+.x-grouptabs-panel .x-grouptabs-corner-top-left {
+    background-position: top left;
+    left: 0; top: 0;
+}
+.x-grouptabs-panel .x-grouptabs-corner-bottom-left {
+    background-position: bottom left;
+    left: 0; bottom: 0;
+}
+.x-grouptabs-panel .x-grouptabs-corner-top-right {
+    background-position: top right;
+    right: 0; top: 0;
+}
+.x-grouptabs-panel .x-grouptabs-corner-bottom-right {
+    background-position: bottom right;
+    right: 0; bottom: 0;
+}
+.x-grouptabs-panel li.x-grouptabs-strip-active .x-grouptabs-corner-bottom-left{
+    bottom: -4px; left: -4px;
+}
+.x-grouptabs-panel li.x-grouptabs-strip-active .x-grouptabs-corner-bottom-right{
+    bottom: -4px; right: -4px;
+}
+.x-grouptabs-panel li.x-grouptabs-strip-active .x-grouptabs-corner-top-left{
+    top: -4px; left: -4px;
+}
+.x-grouptabs-panel li.x-grouptabs-strip-active .x-grouptabs-corner-top-right{
+    top: -4px; right: -4px;
+}
+
+.x-grouptabs-panel ul.x-grouptabs-sub li.x-tab-with-icon a.x-grouptabs-text {
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
+/* General tab styling */
+.x-grouptabs-panel .x-grouptabs-expand {
+	background: transparent url('../images/default/tree/elbow-plus-nl.gif') no-repeat;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	left: 7px;
+	top: 6px;
+}
+
+.ext-ie6 .x-grouptabs-panel .x-grouptabs-expand,
+.ext-border-box .x-grouptabs-panel .x-grouptabs-expand {
+	left: 0;
+}
+
+.x-grouptabs-expanded .x-grouptabs-expand {
+	background-image: url('../images/default/tree/elbow-minus-nl.gif');
+}
+
+/* GroupTabs sub group styling */
+.x-grouptabs-sub {
+	display: none;
+	margin-top: 4px;
+}
+
+.x-grouptabs-expanded .x-grouptabs-sub {
+	display: block;
+}
+
+.x-grouptabs-panel ul.x-grouptabs-sub li {
+	height: 18px;
+	margin: 0 0 2px;
+    padding: 0;
+}
+
+.x-grouptabs-panel ul.x-grouptabs-sub .x-grouptabs-main-item {
+	display: none;
+}
+
+.x-tab-with-icon{
+   border-style:none !important;
+}
+
+
+
+/*###################################################################################################################*/
+
+
+
+.ext-ux-uploaddialog-addbtn
+{
+	background: url('../images/ux/uploaddialog/file-add.gif') no-repeat left center !important;
+}
+
+.ext-ux-uploaddialog-removebtn
+{
+	background: url('../images/ux/uploaddialog/file-remove.gif') no-repeat left center !important;
+}
+
+.ext-ux-uploaddialog-resetbtn
+{
+	background: url('../images/ux/uploaddialog/reset.gif') no-repeat left center !important;
+}
+
+.ext-ux-uploaddialog-uploadstartbtn
+{
+	background: url('../images/ux/uploaddialog/upload-start.gif') no-repeat left center !important;
+}
+
+.ext-ux-uploaddialog-uploadstopbtn
+{
+	background: url('../images/ux/uploaddialog/upload-stop.gif') no-repeat left center !important;
+}
+
+.ext-ux-uploaddialog-indicator-stoped
+{
+	width: 16px;
+	height: 16px;
+	background: url('../images/ux/uploaddialog/done.gif') no-repeat center center;
+}
+
+.ext-ux-uploaddialog-indicator-processing
+{
+	width: 16px;
+	height: 16px;	
+	background: url('../images/ux/uploaddialog/loading.gif') no-repeat center center;
+}
+
+.ext-ux-uploaddialog-state
+{
+	text-align: center;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 14px;
+}
+
+/* Queued */
+.ext-ux-uploaddialog-state-0
+{
+	background-image: url('../images/ux/uploaddialog/uncheck.gif');
+}
+
+/* Finished */
+.ext-ux-uploaddialog-state-1
+{
+	background-image: url('../images/ux/uploaddialog/check.gif');
+}
+
+/* Failed */
+.ext-ux-uploaddialog-state-2
+{
+	background-image: url('../images/ux/uploaddialog/failed.gif');
+}
+
+/* Processing */
+.ext-ux-uploaddialog-state-3
+{
+	background-image: url('../images/ux/uploaddialog/file-uploading.gif');	
+}
+
+/* Progress bar fix */
+.ext-ie7 .ext-ux-uploaddialog-dialog .x-progress-bar .x-progress-text div
+{
+	display: none;
+}
+
+.ext-ie7 .ext-ux-uploaddialog-dialog .x-progress-text-back
+{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+}
+
+.ext-ie7 .ext-ux-uploaddialog-dialog .x-progress-text-back div
+{
+	width: auto !important;
+	white-space: nowrap;
+}
+
+
+
+/*###################################################################################################################*/
+
+
+
+/*!
+ * Ext JS Library 3.3.1
+ * Copyright(c) 2006-2010 Sencha Inc.
+ * licensing@sencha.com
+ * http://www.sencha.com/license
+ */
+/*
+ * FileUploadField component styles
+ */
+.x-form-file-wrap {
+    position: relative;
+    height: 22px;
+}
+.x-form-file-wrap .x-form-file {
+	position: absolute;
+	right: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+    height: 22px;
+}
+.x-form-file-btn-only {
+	transform: translate(0px, 0px) scale(4);
+}
+.x-form-file-wrap .x-form-file-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+}
+.x-form-file-wrap .x-form-file-text {
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    color: #777;
+}
+
+
+
+/*###################################################################################################################*/
+
+
+
+/** vim: ts=4:sw=4:nu:fdc=4:nospell
+ *
+ * Ext.ux.form.LovCombo CSS File
+ *
+ * @author    Ing.Jozef Sakáloš
+ * @copyright (c) 2008, by Ing. Jozef Sakáloš
+ * @date      5. April 2008
+ * @version   $Id: Ext.ux.form.LovCombo.css 682 2009-04-17 01:35:14Z jozo $
+ *
+ * @license Ext.ux.form.LovCombo.css is licensed under the terms of the Open Source
+ * LGPL 3.0 license. Commercial use is permitted to the extent that the 
+ * code/component(s) do NOT become part of another Open Source or Commercially
+ * licensed development library or toolkit without explicit permission.
+ * 
+ * License details: http://www.gnu.org/licenses/lgpl.html
+ */
+
+.ux-lovcombo-icon {
+	width:16px;
+	height:16px;
+	float:left;
+	background-position: -1px -1px ! important;
+	background-repeat:no-repeat ! important;
+}
+.ux-lovcombo-icon-checked {
+	background: transparent url(../images/default/menu/checked.gif);
+}
+.ux-lovcombo-icon-unchecked {
+	background: transparent url(../images/default/menu/unchecked.gif);
+}
+/* IE patch */
+.ext-ie .ux-lovcombo-item-text {
+	position:absolute;
+	left:16px;
+	top:3px;
+}
+.ext-ie .ux-lovcombo-icon {
+	float:none;
+}
+.ext-ie .x-combo-list-item {
+	position:relative;
+}
+ 
+/* eof */
+
+
+
+/*###################################################################################################################*/
+
+
+
+/*!
+ * Ext JS Library 3.3.1
+ * Copyright(c) 2006-2010 Sencha Inc.
+ * licensing@sencha.com
+ * http://www.sencha.com/license
+ */
+/**
+ * GridFilters Styles
+ **/
+/*
+.x-grid3-hd-row .ux-filtered-column {
+	border-left:  1px solid #C7E3B4;
+	border-right: 1px solid #C7E3B4;
+}
+
+.x-grid3-hd-row .ux-filtered-column .x-grid3-hd-inner {
+	background-image: url(../images/header_bg.gif);
+}
+
+.ux-filtered-column .x-grid3-hd-btn {
+	background-image: url(../images/hd-btn.gif);
+}
+*/
+.x-grid3-hd-row td.ux-filtered-column {   
+    font-style: italic;  
+    font-weight: bold;
+}		
+
+.ux-filtered-column.sort-asc .x-grid3-sort-icon {
+	background-image: url(../images/ux/gridfilters/sort_filtered_asc.gif) !important;
+}
+
+.ux-filtered-column.sort-desc .x-grid3-sort-icon {
+	background-image: url(../images/ux/gridfilters/sort_filtered_desc.gif) !important;
+}
+
+.ux-gridfilter-text-icon {
+	background-image: url(../images/ux/gridfilters/find.png) !important;
+}
+
+/* Temporary Patch for Bug ??? */
+.x-menu-list-item-indent .x-menu-item-icon {
+	position: relative;
+    top: 3px;
+    left: 3px;
+	margin-right: 10px;
+}
+li.x-menu-list-item-indent {
+	padding-left:0px;
+}
+li.x-menu-list-item div {
+	display: block;
+}
+
+/*!
+ * Ext JS Library 3.3.1
+ * Copyright(c) 2006-2010 Sencha Inc.
+ * licensing@sencha.com
+ * http://www.sencha.com/license
+ */
+/**
+ * RangeMenu Styles
+ **/
+.ux-rangemenu-gt {
+	background-image: url(../images/ux/gridfilters/greater_than.png) !important;
+}
+
+.ux-rangemenu-lt {
+	background-image: url(../images/ux/gridfilters/less_than.png) !important;
+}
+
+.ux-rangemenu-eq {
+	background-image: url(../images/ux/gridfilters/equals.png) !important;
+}
+
+
+
+/*###################################################################################################################*/
+
+
+
+/*!
+ * Ext JS Library 3.3.1
+ * Copyright(c) 2006-2010 Sencha Inc.
+ * licensing@sencha.com
+ * http://www.sencha.com/license
+ */
+.x-treegrid-root-table {
+    border-right: 1px solid;
+}
+
+.x-treegrid-root-node {
+    overflow: auto;
+}
+
+.x-treegrid-hd-hidden {
+    visibility: hidden;
+    border: 0;
+    width: 0;
+}
+
+.x-treegrid-col {
+    border-bottom: 1px solid;
+    height: 20px;
+    overflow: hidden;
+    vertical-align: top;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.x-treegrid-text {
+    padding-left: 4px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+}
+
+.x-treegrid-resizer {
+    border-left:1px solid;
+    border-right:1px solid;
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+.x-treegrid-header-inner {
+    overflow: hidden;
+}
+
+.x-treegrid-root-table,
+.x-treegrid-col {
+    border-color: #ededed;
+}
+
+.x-treegrid-resizer {
+    border-left-color:#555;
+    border-right-color:#555;
+}
+
+
+
+/*###################################################################################################################*/

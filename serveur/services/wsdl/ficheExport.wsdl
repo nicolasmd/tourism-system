@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+
+		</xsd:schema>
+	</wsdl:types>
+	
+	
+	<message name="exportFicheXmlRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idFiche" type="xsd:int"/>
+		<part name="idFicheVersion" type="xsd:int" nillable="true"/>
+	</message>
+	
+	<message name="exportFicheXmlResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="xml" type="xsd:string"/>
+	</message>
+	
+	<message name="exportFichePdfRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="idFiche" type="xsd:int"/>
+	</message>
+	<message name="exportFichePdfResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="url" type="xsd:string"/>
+	</message>
+	
+	<message name="exportFichesValeurChampRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="identifiant" type="xsd:string"/>
+	</message>
+	
+	<message name="exportFichesValeurChampResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="fiches" type="xs:anyType"/>
+	</message>
+	
+	<portType name="CspPorts">
+		<operation name="exportFicheXml">
+			<input  message="tns:exportFicheXmlRequest"/>
+			<output message="tns:exportFicheXmlResponse"/>
+		</operation>
+		
+		<operation name="exportFichePdf">
+			<input  message="tns:exportFichePdfRequest"/>
+			<output message="tns:exportFichePdfResponse"/>
+		</operation>
+		
+		<operation name="exportFichesValeurChamp">
+			<input  message="tns:exportFichesValeurChampRequest"/>
+			<output message="tns:exportFichesValeurChampResponse"/>
+		</operation>
+	</portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		
+		<operation name="exportFicheXml">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheExport.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="exportFichePdf">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheExport.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		
+		<operation name="exportFichesValeurChamp">
+			<soap:operation soapAction="{BASE_URL}services/wsdl/ficheExport.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="TourismSystemWebServiceFicheExport">
+		<documentation>Webservices ficheExport de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}ficheExport.php"/>
+		</port>
+	</service>
+
+</definitions>

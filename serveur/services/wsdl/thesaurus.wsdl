@@ -1,0 +1,445 @@
+<?xml version="1.0"?>
+<definitions name="CSP"
+	targetNamespace="urn:CSP"
+	xmlns:tns="urn:CSP"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:typens="urn:CSP"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+	<wsdl:types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:CSP">
+			<complexType name="WSstatus">
+				<all>
+					<element name="success" type="xsd:boolean"/>
+					<element name="message" type="xsd:string"/>
+					<element name="errorCode" type="xsd:int" />
+					<element name="errorInfos" type="xs:anyType" />
+				</all>
+			</complexType>
+
+
+			<complexType name="thesaurus">
+				<all>
+					<element name="libelle" type="xsd:string"/>
+					<element name="codeThesaurus" type="xsd:string"/>
+					<element name="prefixe" type="xsd:int"/>
+					<element name="idNorme" type="xsd:int"/>
+				</all>
+			</complexType>
+
+			<complexType name="ArrayOfThesaurii">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:thesaurus[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+
+
+
+			<complexType name="entreeThesaurus">
+				<all>
+					<element name="cle" type="xsd:string"/>
+					<element name="libelle" type="xsd:string"/>
+					<element name="liste" type="xsd:string"/>
+					<element name="lang" type="xsd:string"/>
+				</all>
+			</complexType>
+
+			<complexType name="ArrayOfEntreesThesaurus">
+				<complexContent mixed="false">
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:entreeThesaurus[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+
+		</xsd:schema>
+	</wsdl:types>
+
+
+
+
+	<message name="createThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codeThesaurus" type="xsd:string"/>
+		<part name="libelle" type="xsd:string"/>
+		<part name="idNorme" type="xsd:int"/>
+	</message>
+	<message name="createThesaurusResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="prefixe" nillable="true" type="xsd:int"/>
+	</message>
+
+	<message name="updateThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codeThesaurus" type="xsd:string"/>
+		<part name="libelle" type="xsd:string"/>
+	</message>
+	<message name="updateThesaurusResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+
+    <message name="getThesauriiRequest">
+        <part name="sessionId" type="xsd:string"/>
+    </message>
+    <message name="getThesauriiResponse">
+        <part name="status" type="tns:WSstatus"/>
+        <part name="thesaurii" type="tns:ArrayOfThesaurii"/>
+    </message>
+
+    <message name="getUserThesauriiRequest">
+        <part name="sessionId" type="xsd:string"/>
+    </message>
+    <message name="getUserThesauriiResponse">
+        <part name="status" type="tns:WSstatus"/>
+        <part name="thesaurii" type="tns:ArrayOfThesaurii"/>
+    </message>
+
+    <message name="getEntreesThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codeThesaurus" type="xsd:string"/>
+		<part name="codeLangue" type="xsd:string"/>
+	</message>
+	<message name="getEntreesThesaurusResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="entreesThesaurus" nillable="true" type="xsd:ArrayOfEntreesThesaurus"/>
+	</message>
+
+	<message name="getEntreesThesauriiRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codesThesaurii" type="xs:anyType"/>
+		<part name="codeLangue" type="xsd:string"/>
+	</message>
+	<message name="getEntreesThesauriiResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="entreesThesaurii" nillable="true" type="xsd:ArrayOfEntreesThesaurus"/>
+	</message>
+
+	<message name="getEntreeThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codeTif" type="xsd:string"/>
+		<part name="codeLangue" type="xsd:string"/>
+	</message>
+	<message name="getEntreeThesaurusResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="entreeThesaurus" nillable="true" type="xsd:entreeThesaurus"/>
+	</message>
+
+	<message name="addEntreeThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codeThesaurus" type="xsd:string"/>
+		<part name="cleParente" type="xsd:string"/>
+		<part name="libelle" type="xsd:string"/>
+		<part name="codeLangue" nillable="true" type="xsd:string"/>
+	</message>
+	<message name="addEntreeThesaurusResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="codeTif" type="xsd:string"/>
+	</message>
+
+	<message name="deleteEntreeThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codeTif" type="xsd:string"/>
+	</message>
+	<message name="deleteEntreeThesaurusResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true" />
+	</message>
+
+	<message name="setEntreeThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codeTif" type="xsd:string"/>
+		<part name="codeLangue" type="xsd:string"/>
+		<part name="libelle" type="xsd:string"/>
+	</message>
+	<message name="setEntreeThesaurusResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true"/>
+	</message>
+
+	<message name="translateEntreeThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="codeTif" type="xsd:string"/>
+		<part name="codeLangue" type="xsd:string"/>
+		<part name="libelle" type="xsd:string"/>
+	</message>
+	<message name="translateEntreeThesaurusResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="reponse" type="xs:anyType" nillable="true"/>
+	</message>
+
+	<message name="getListeThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="liste" type="xsd:string"/>
+		<part name="cle" type="xsd:string"/>
+		<part name="pop" type="xsd:string"/>
+	</message>
+	<message name="getListeThesaurusResponse">
+		<part name="status" type="tns:WSstatus"/>
+		<part name="liste" nillable="true" type="xsd:ArrayOfEntreesThesaurus" />
+	</message>
+
+
+    <message name="getEntreeThesaurusByLibelleViaStemRequest">
+        <part name="sessionId" type="xsd:string"/>
+        <part name="libelle" type="xsd:string"/>
+        <part name="xpath" type="xsd:string"/>
+        <part name="bordereau" type="xsd:string"/>
+    </message>
+    <message name="getEntreeThesaurusByLibelleViaStemResponse">
+        <part name="status" type="tns:WSstatus"/>
+        <part name="liste" nillable="true" type="xsd:ArrayOfEntreesThesaurus"/>
+    </message>
+
+
+    <message name="getArbreThesaurusRequest">
+		<part name="sessionId" type="xsd:string"/>
+		<part name="cle" type="xsd:string"/>
+        <part name="pop" type="xsd:string"/>
+    </message>
+    <message name="getArbreThesaurusResponse">
+        <part name="status" type="tns:WSstatus"/>
+        <part name="arbre" nillable="true" type="xs:anyType"/>
+    </message>
+
+
+    <portType name="CspPorts">
+		<operation name="createThesaurus">
+			<input  message="tns:createThesaurusRequest"/>
+			<output message="tns:createThesaurusResponse"/>
+		</operation>
+
+		<operation name="updateThesaurus">
+			<input  message="tns:updateThesaurusRequest"/>
+			<output message="tns:updateThesaurusResponse"/>
+		</operation>
+
+        <operation name="getThesaurii">
+            <input message="tns:getThesauriiRequest"/>
+            <output message="tns:getThesauriiResponse"/>
+        </operation>
+
+        <operation name="getUserThesaurii">
+            <input message="tns:getUserThesauriiRequest"/>
+            <output message="tns:getUserThesauriiResponse"/>
+        </operation>
+
+        <operation name="getEntreesThesaurus">
+			<input  message="tns:getEntreesThesaurusRequest"/>
+			<output message="tns:getEntreesThesaurusResponse"/>
+		</operation>
+
+		<operation name="getEntreesThesaurii">
+			<input  message="tns:getEntreesThesauriiRequest"/>
+			<output message="tns:getEntreesThesauriiResponse"/>
+		</operation>
+
+		<operation name="getEntreeThesaurus">
+			<input  message="tns:getEntreeThesaurusRequest"/>
+			<output message="tns:getEntreeThesaurusResponse"/>
+		</operation>
+
+		<operation name="addEntreeThesaurus">
+			<input  message="tns:addEntreeThesaurusRequest"/>
+			<output message="tns:addEntreeThesaurusResponse"/>
+		</operation>
+
+		<operation name="deleteEntreeThesaurus">
+			<input  message="tns:deleteEntreeThesaurusRequest"/>
+			<output message="tns:deleteEntreeThesaurusResponse"/>
+		</operation>
+
+		<operation name="setEntreeThesaurus">
+			<input message="tns:setEntreeThesaurusRequest"/>
+			<output message="tns:setEntreeThesaurusResponse"/>
+		</operation>
+
+		<operation name="translateEntreeThesaurus">
+			<input message="tns:translateEntreeThesaurusRequest"/>
+			<output message="tns:translateEntreeThesaurusResponse"/>
+		</operation>
+
+        <operation name="getListeThesaurus">
+            <input message="tns:getListeThesaurusRequest"/>
+            <output message="tns:getListeThesaurusResponse"/>
+        </operation>
+
+
+
+        <operation name="getEntreeThesaurusByLibelleViaStem">
+            <input message="tns:getEntreeThesaurusByLibelleViaStemRequest"/>
+            <output message="tns:getEntreeThesaurusByLibelleViaStemResponse"/>
+        </operation>
+
+
+        <operation name="getArbreThesaurus">
+            <input message="tns:getArbreThesaurusRequest"/>
+            <output message="tns:getArbreThesaurusResponse"/>
+        </operation>
+
+
+    </portType>
+
+
+	<binding name="wsBinding"  type="typens:CspPorts">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="createThesaurus">
+			<soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="updateThesaurus">
+			<soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+        <operation name="getThesaurii">
+            <soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+
+        <operation name="getUserThesaurii">
+            <soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+
+        <operation name="getEntreesThesaurus">
+			<soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="getEntreesThesaurii">
+			<soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="getEntreeThesaurus">
+			<soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="addEntreeThesaurus">
+			<soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="deleteEntreeThesaurus">
+			<soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="setEntreeThesaurus">
+			<soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+		<operation name="translateEntreeThesaurus">
+			<soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+
+        <operation name="getListeThesaurus">
+            <soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+
+
+
+        <operation name="getEntreeThesaurusByLibelleViaStem">
+            <soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+
+
+        <operation name="getArbreThesaurus">
+            <soap:operation soapAction="http://www.sit-serveur.dev:82/services/wsdl/thesaurus.wsdl" style="rpc"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+
+
+    </binding>
+
+	<service name="TourismSystemWebServiceThesaurus">
+		<documentation>Webservices thésaurus de Tourism System</documentation>
+		<port name="CspPorts" binding="tns:wsBinding">
+			<soap:address location="{BASE_URL}thesaurus.php"/>
+		</port>
+	</service>
+
+</definitions>
